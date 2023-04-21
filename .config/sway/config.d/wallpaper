@@ -1,0 +1,2 @@
+set $lockscreenbg ~/Pictures/wallpaper/linux-wonderland-tundra.png
+output * bg ~/Pictures/wallpaper/linux-wonderland-tundra.png fill
