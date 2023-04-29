@@ -11,27 +11,30 @@
  * -------------------------------------------------------------------------- */
 
 /*
-Arc-Dark Color Scheme
+thunar
 */
+
+@import "retro.css";
+
 @keyframes blink-warning {
-    70% {
-        color: white;
+    10% {
+        color: @white;
     }
 
     to {
-        color: white;
-        background-color: orange;
+        color: @black;
+        background-color: @orange;
     }
 }
 
 @keyframes blink-critical {
-    70% {
-      color: white;
+    10% {
+      color: @white;
     }
 
     to {
-        color: white;
-        background-color: red;
+        color: @black;
+        background-color: @red;
     }
 }
 
@@ -46,19 +49,15 @@ Arc-Dark Color Scheme
     min-height: 0;
     margin: 1px;
     padding: 0;
-    color: #66ACED;
 }
 
 
 /* The whole bar */
 window#waybar {
-    /* color: #dfdfdf; */
-    /* background-color: rgba(0,0,0,0.8); */
-    /* background-color: rgba(8,0,37,0.85); */
     background-color: rgba(0,0,0,0);
-    font-family: "JetBrains Mono";
+    font-family: "JetBrains Mono", "Font Awesome 5 Free";
     font-size: 14px;
-    /* border-radius: 22px; */
+    font-weight: bold;
 }
 
 /* Every modules */
@@ -82,8 +81,9 @@ window#waybar {
 #custom-PBPbattery {
     padding:0.25rem 0.75rem;
     margin: 1px 6px;
-    background-color: rgba(0,0,0,0.8);
-    border-radius: 20px;
+    background-color: @background;
+    border-radius: 10px;
+    color: @blue;
 }
 
 /* -----------------------------------------------------------------------------
@@ -91,12 +91,13 @@ window#waybar {
  * -------------------------------------------------------------------------- */
 
 #clock {
-    /* color: #ff4499; */
-    color: #73daca;
+    margin-right: 0;
+    border-radius: 10px 0 0 10px;
 }
 
 #custom-weather {
-    color: #ff4499;
+    margin-left: 0;
+    border-radius: 0 10px 10px 0;
 }
 
 #battery {
@@ -106,11 +107,11 @@ window#waybar {
 }
 
 #battery.warning {
-    color: orange;
+    color: @white;
 }
 
 #battery.critical {
-    color: red;
+    color: @white;
 }
 
 #battery.warning.discharging {
@@ -123,9 +124,9 @@ window#waybar {
     animation-duration: 2s;
 }
 
-#cpu {
-    color: #f7768e;
-}
+/* #cpu {
+    background-color: #f7768e;
+} */
 
 #cpu.warning {
     color: orange;
@@ -139,7 +140,6 @@ window#waybar {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-    color: #f7768e;
 }
 
 #memory.warning {
@@ -155,8 +155,6 @@ window#waybar {
 }
 
 #mode {
-    /* background: @highlight; */
-    /* background: #dfdfdf; */
     border-bottom: 3px transparent;
     color:#ff4499;
     margin-left: 5px;
@@ -168,11 +166,10 @@ window#waybar {
 }
 
 #pulseaudio {
-    color: #bb9af7;
     border-left: 0px;
     border-right: 0px;
     margin-right: 0;
-    border-radius: 20px 0 0 20px;
+    border-radius: 10px 0 0 10px;
 }
 
 /* #pulseaudio.muted { */
@@ -184,7 +181,7 @@ window#waybar {
     border-right: 0px;
     margin-left: 0;
     padding-left: 0;
-    border-radius: 0 20px 20px 0;
+    border-radius: 0 10px 10px 0;
 }
 
 /* #pulseaudio.microphone.muted { */
@@ -193,39 +190,36 @@ window#waybar {
 
 
 #temperature.critical {
-    color: red;
+    color: @red;
 }
 
-#window {
+/* #window {
     font-weight: bold;
-    color: #f7768e;
-}
+} */
 
-#custom-media {
-    color: #bb9af7;
-}
-
-#workspaces {
-    font-size:16px;
-    background-color: rgba(0,0,0,0.8);
-    border-radius: 20px;
-}
+/* #custom-media {
+    background-color: #bb9af7;
+} */
 
 #workspaces button {
-    border-bottom: 3px solid transparent;
-    margin-bottom: 0px;
-    color: #dfdfdf;
+    color: @black;
+    min-width: 2rem;
 }
 
-#workspaces button.active {
-    border-bottom: 1px solid  #ff4499;
-    margin-bottom: 1px;
-    padding-left:0;
+#workspaces button:hover {
+    background: transparent;
+    color: @white;
+    box-shadow: inset 0 0 transparent;
+}
+
+#workspaces button.focused {
+    color: @blue;
+    background: transparent;
 }
 
 #workspaces button.urgent {
-    border-color: #c9545d;
-    color: #c9545d;
+    border-color: @red;
+    color: @red;
 }
 
 #custom-power {

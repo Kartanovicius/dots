@@ -25,8 +25,9 @@ set $powermenu ~/.config/waybar/scripts/power-menu.sh
 #
 default_border none
 # Stablish gaps between windows and from the screen edge
-gaps inner 5
-gaps outer 1
+gaps inner 0
+gaps outer 5
+gaps top 0
 
 #
 # Example configuration:
@@ -196,7 +197,6 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-
     swaybar_command waybar
 
     # When the status_command prints a new line to stdout, swaybar updates.

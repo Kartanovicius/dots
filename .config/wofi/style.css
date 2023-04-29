@@ -2,24 +2,30 @@
 Arc-Dark Color Scheme
 */
 
-/* @define-color highlight #e30b9b; */
-@define-color highlight #f7768e;
-@define-color base1  rgba(0,0,0,0.2);
-@define-color base2 rgba(0,0,0,0.8);
-@define-color base3  rgba(0,0,0,0.1);
+@define-color selectionBackground #374151;
+
+@define-color background #111827;
+@define-color foreground #D1D5DB;
+
+@define-color black #6B7280;
+@define-color red #FCA5A5;
+@define-color green #B1E3AD;
+@define-color orange #FBC19D;
+@define-color blue #BAE6FD;
+@define-color purple #DDD6FE;
+@define-color cyan #BAE6FD;
+@define-color white #D1D5DB;
 
 *{
     font-family: "JetBrains Mono";
 }
 
 window {
-    /* border: 1px solid @highlight; */
     border-radius: 18px;
-    /* background: rgba(0,0,0,0); */
-    color: #bb9af7;
+    color: @blue;
     position: relative;
-    background: linear-gradient(to bottom right, #73daca, #f7768e);
     padding: 1px;
+    background: @selectionBackground;
 }
 
 #input {
@@ -29,24 +35,28 @@ window {
     border:none;
     outline:none;
     /* color: white; */
-    color: #bb9af7;
-    /* background: @base1; */
-    background-color: #0a0a0a;
+    background-color: @background;
+}
+
+#input:focus {
+    border:none;
+    outline:none;
 }
 
 #inner-box {
-    /* background: @base3; */
+    background: transparent;
 }
 
 #outer-box {
     margin: 3px;
+    border-color: @blue;
     padding:15px;
-    background-color: #0a0a0a;
+    background-color: @background;
     border-radius: 18px;
 }
 
 #text {
-    padding: 5px;
+    padding: 7px;
 }
 
 /* #entry:nth-child(even) { */
@@ -54,8 +64,8 @@ window {
 /* } */
 
 #entry:selected {
-    color: black;
-    background-color: @highlight;
+    background-color: @selectionBackground;
+    border-radius: 5px;
     border:none;
     outline:none;
 }

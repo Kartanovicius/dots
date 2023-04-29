@@ -1,41 +1,39 @@
-// Global
+// Author https://github.com/Kartanovicius
+// Icons https://fontawesome.com/v5/cheatsheet/free
+
 {
   "layer": "top",
   "position": "top",
-  "margin": 0,
+  "margin": 3,
 
   // If height property would be not present, it'd be calculated dynamically
   "height": 30,
 
   "modules-left": [
-    // "custom/launcher",
+    "clock",
+    "custom/weather",
     "sway/workspaces",
-    "custom/media",
-    "sway/window"
+    "custom/media"
   ],
 
-  "modules-center": ["clock", "custom/weather"],
+  "modules-center": [],
 
   "modules-right": [
     "tray",
-    // "idle_inhibitor",
     "memory",
     "cpu",
     "temperature",
-    // "custom/keyboard-layout",
+    "custom/keyboard-layout",
     "battery",
-    // "custom/PBPbattery",
     "backlight#icon",
     "pulseaudio",
     "pulseaudio#microphone",
     "network"
   ],
 
-  // Modules
+  // BUILD-IN Modules
 
-  "temperature": {
-    "exec": "alacritty -e firefox -new-window https://www.accuweather.com/en/cz/prague/125594/weather-forecast/125594"
-  },
+  "temperature": {},
 
   "idle_inhibitor": {
     "format": "{icon} ",
@@ -52,21 +50,14 @@
       "critical": 15
     },
     "format": "{capacity}% {icon}",
-    "format-charging": "{capacity}%  ",
-    "format-plugged": "{capacity}%  ",
-    // "format-good": "", // An empty format will hide the module
-    // "format-full": "",
-    "format-icons": [" ", " ", " ", " ", " "]
-  },
-
-  "custom/PBPbattery": {
-    "exec": "~/.config/waybar/scripts/PBPbattery.sh",
-    "format": "{}"
+    "format-charging": "{capacity}%  ", // Icon: plug
+    "format-plugged": "{capacity}%  ", // Icon: plug
+    "format-icons": [" ", " ", " ", " ", " "] // Icon: battery
   },
 
   "clock": {
     "interval": 10,
-    "format-alt": " {:%e %b %Y}", // Icon: calendar-alt
+    "format-alt": " {:%e %b %Y (%A)}", // Icon: calendar-alt
     "format": "{:%e %b %Y %H:%M}",
     "tooltip-format": "{:%e %B %Y}"
   },
@@ -78,24 +69,13 @@
       "warning": 70,
       "critical": 90
     },
-    "on-click": "alacritty -e 'htop'"
-  },
-
-  "custom/keyboard-layout": {
-    "exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
-    // Interval set only as a fallback, as the value is updated by signal
-    "interval": 30,
-    "format": "  {}", // Icon: keyboard
-    // Signal sent by Sway key binding (~/.config/sway/key-bindings)
-    "signal": 1, // SIGHUP
-    "tooltip": false,
-    "on-click": "~/.config/waybar/scripts/keyhint.sh"
+    "on-click": "kitty -e 'htop'"
   },
 
   "memory": {
     "interval": 5,
     "format": "{used:0.1f}G/{total:0.1f}G ",
-    "on-click": "alacritty -e 'htop'",
+    "on-click": "kitty -e 'htop'",
     "states": {
       "warning": 50,
       "critical": 70
@@ -108,7 +88,7 @@
     "format-ethernet": " ", // Icon: ethernet
     "format-disconnected": "⚠  Disconnected",
     "tooltip-format": "{ifname}: {ipaddr}",
-    "on-click": "alacritty -e 'nmcli dev wifi list'"
+    "on-click": "kitty nmcli device wifi list"
   },
   "network#vpn": {
     "interface": "tun0",
@@ -147,7 +127,7 @@
     "format-bluetooth-muted": " {icon}  {format_source}",
     "format-muted": "婢",
     "format-icons": {
-      "headphone": "🎧",
+      "headphone": "",
       "hands-free": "וֹ",
       "headset": "  ",
       "phone": "",
@@ -172,14 +152,6 @@
     "scroll-step": 5
   },
 
-  // to use the weather module replace <your_location> with your city or town
-  // note: do not use spaces: new york would be newyork
-  "custom/weather": {
-    "exec": "~/.config/waybar/scripts/weather.sh prague",
-    "return-type": "json",
-    "interval": 600
-  },
-
   "tray": {
     "icon-size": 18,
     "spacing": 10
@@ -192,34 +164,27 @@
     "on-scroll-up": "brightnessctl -c backlight set +1%"
   },
 
-  "backlight#value": {
-    "format": "{percent}%",
-    "on-scroll-down": "brightnessctl -c backlight set 1%-",
-    "on-scroll-up": "brightnessctl -c backlight set +1%"
+  // CUSTOM Modules
+
+  "custom/keyboard-layout": {
+    "exec": "swaymsg -t get_inputs | jq '.[] | select(.identifier == \"1:1:AT_Translated_Set_2_keyboard\") | .xkb_active_layout_name' | tr -d '\"'",
+    // Interval set only as a fallback, as the value is updated by signal
+    "interval": 30,
+    "format": "  {}", // Icon: keyboard
+    "signal": 1, // SIGHUP
+    "tooltip": false,
+    // Change signal value in ~/.config/waybar/scripts/change_language.sh
+    "on-click": "~/.config/waybar/scripts/change_language.sh 1"
   },
 
-  "custom/firefox": {
-    "format": " ",
-    "on-click": "exec firefox",
-    "tooltip": false
-  },
-
-  "custom/terminal": {
-    "format": " ",
-    "on-click": "exec alacritty",
-    "tooltip": false
-  },
-
-  "custom/files": {
-    "format": " ",
-    "on-click": "exec nautilus",
-    "tooltip": false
-  },
-
-  "custom/launcher": {
-    "format": " ",
-    "on-click": "exec wofi -c ~/.config/wofi/config -I",
-    "tooltip": false
+  // to use the weather module replace <your_location> with your city or town
+  // note: do not use spaces: new york would be newyork
+  "custom/weather": {
+    "exec": "~/.config/waybar/scripts/weather.sh prague",
+    "return-type": "json",
+    "interval": 600,
+    // Change 125594 to the value of any other city if needed
+    "on-click": "flatpak run org.chromium.Chromium https://www.accuweather.com/en/cz/prague/125594/weather-forecast/125594"
   },
 
   "custom/power": {
@@ -233,8 +198,8 @@
     "return-type": "json",
     "max-length": 40,
     "format-icons": {
-      "spotify": "🔉",
-      "default": "🔉"
+      "spotify": "",
+      "default": ""
     },
     "escape": true,
     "exec": "/usr/bin/python3 $HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null" // Script in resources folder
