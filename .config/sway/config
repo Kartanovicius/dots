@@ -25,7 +25,7 @@ set $powermenu ~/.config/waybar/scripts/power-menu.sh
 #
 default_border none
 # Stablish gaps between windows and from the screen edge
-gaps inner 0
+gaps inner 1
 gaps outer 5
 gaps top 0
 
