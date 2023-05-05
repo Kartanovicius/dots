@@ -1,0 +1,2 @@
+alias donates='source ~/.bash_aliases && echo "Ja jsem Donates :)"'
+alias inode='~/bash-tools/node.sh'

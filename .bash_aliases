@@ -1,1 +1,0 @@
-alias donates='source ~/.bash_aliases && echo "Ja jsem Donates :)"'

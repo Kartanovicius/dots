@@ -1,0 +1,10 @@
+{
+  "folders": [
+    {
+      "path": "../pfx/pricefx-code-extension"
+    }
+  ],
+  "settings": {
+    "typescript.tsc.autoDetect": "off"
+  }
+}

@@ -1,0 +1,14 @@
+
+alias pfx='cd ~/pfx/pricefx-clients-js/'
+alias pfx-sfdc='cd ~/pfx/pricefx-clients-js/packages/pricefx-sfdc-canvas'
+alias pfx-js='cd ~/pfx/pricefx-clients-js/packages/pricefx-js'
+alias pfx-module='cd ~/pfx/pricefx-clients-js/packages/pricefx-modules'
+alias pfx-localhost='chromium-browser http://localhost:4200/sfdc/'
+alias pfx-create-sugar-crm-zip='(cd ~/pfx/pricefx-clients-js/packages/pricefx-crm-extensions/sugarCRM/source && zip -r -X pricefx_Sugar11.zip * && cp pricefx_Sugar11.zip ~/pfx/pricefx-files && rm -r ~/pfx/pricefx-clients-js/packages/pricefx-crm-extensions/sugarCRM/source/pricefx_Sugar11.zip;)'
+
+alias start-pfx-client='
+  tmux new-session -d -s pfx "cd ~/pfx/pricefx-clients-js/packages/pricefx-sfdc-canvas && yarn start";
+  tmux split-window -h -t pfx "cd ~/pfx/pricefx-clients-js/packages/pricefx-modules && yarn start";
+  tmux select-layout -t pfx tiled;
+  tmux attach-session -t pfx;
+'

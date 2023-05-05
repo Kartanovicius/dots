@@ -1,0 +1,239 @@
+/* =============================================================================
+ *
+ * Waybar configuration
+ *
+ * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+ *
+ * =========================================================================== */
+
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+/*
+thunar
+*/
+
+@import "retro.css";
+
+@keyframes blink-warning {
+    10% {
+        color: @white;
+    }
+
+    to {
+        color: @black;
+        background-color: @orange;
+    }
+}
+
+@keyframes blink-critical {
+    10% {
+      color: @white;
+    }
+
+    to {
+        color: @black;
+        background-color: @red;
+    }
+}
+
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 1px;
+    padding: 0;
+}
+
+
+/* The whole bar */
+window#waybar {
+    background-color: rgba(0,0,0,0);
+    font-family: "JetBrains Mono", "Font Awesome 5 Free";
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Every modules */
+#battery,
+#clock,
+#backlight,
+#cpu,
+#custom-keyboard-layout,
+#memory,
+#mode,
+#custom-weather,
+#network,
+#pulseaudio,
+#temperature,
+#tray,
+#idle_inhibitor,
+#window,
+#custom-power,
+#workspaces,
+#custom-media,
+#custom-PBPbattery {
+    padding:0.25rem 0.75rem;
+    margin: 1px 6px;
+    background-color: @background;
+    border-radius: 10px;
+    color: @blue;
+}
+
+/* -----------------------------------------------------------------------------
+ * Modules styles
+ * -------------------------------------------------------------------------- */
+
+#clock {
+    margin-right: 0;
+    border-radius: 10px 0 0 10px;
+}
+
+#custom-weather {
+    margin-left: 0;
+    border-radius: 0 10px 10px 0;
+}
+
+#battery {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.warning {
+    color: @white;
+}
+
+#battery.critical {
+    color: @white;
+}
+
+#battery.warning.discharging {
+    animation-name: blink-warning;
+    animation-duration: 3s;
+}
+
+#battery.critical.discharging {
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+
+/* #cpu {
+    background-color: #f7768e;
+} */
+
+#cpu.warning {
+    color: orange;
+}
+
+#cpu.critical {
+    color: red;
+}
+
+#memory {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#memory.warning {
+    color: orange;
+ }
+
+#memory.critical {
+    color: red;
+    animation-name: blink-critical;
+    animation-duration: 2s;
+    padding-left:5px;
+    padding-right:5px;
+}
+
+#mode {
+    border-bottom: 3px transparent;
+    color:#ff4499;
+    margin-left: 5px;
+    padding: 7px;
+}
+
+#network.disconnected {
+    color: orange;
+}
+
+#pulseaudio {
+    border-left: 0px;
+    border-right: 0px;
+    margin-right: 0;
+    border-radius: 10px 0 0 10px;
+}
+
+/* #pulseaudio.muted { */
+/*     color: #ff4499; */
+/* } */
+/**/
+#pulseaudio.microphone {
+    border-left: 0px;
+    border-right: 0px;
+    margin-left: 0;
+    padding-left: 0;
+    border-radius: 0 10px 10px 0;
+}
+
+/* #pulseaudio.microphone.muted { */
+/*     color: #ff4499; */
+/* } */
+
+
+#temperature.critical {
+    color: @red;
+}
+
+/* #window {
+    font-weight: bold;
+} */
+
+/* #custom-media {
+    background-color: #bb9af7;
+} */
+
+#workspaces button {
+    color: @black;
+    min-width: 2rem;
+}
+
+#workspaces button:hover {
+    background: transparent;
+    color: @white;
+    box-shadow: inset 0 0 transparent;
+}
+
+#workspaces button.focused {
+    color: @blue;
+    background: transparent;
+}
+
+#workspaces button.urgent {
+    border-color: @red;
+    color: @red;
+}
+
+#custom-power {
+    font-size:18px;
+    padding-right: 1rem;
+}
+
+#custom-launcher {
+    font-size:15px;
+    margin-left:15px;
+    margin-right:10px;
+}
+
+#backlight.icon {
+    padding-right:1px;
+    font-size: 13px;
+}
