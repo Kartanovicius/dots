@@ -4,7 +4,8 @@
 {
   "layer": "top",
   "position": "top",
-  "margin": 3,
+  "margin-top": 3,
+  "margin-bottom": 0,
 
   // If height property would be not present, it'd be calculated dynamically
   "height": 30,

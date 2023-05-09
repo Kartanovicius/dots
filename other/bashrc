@@ -8,7 +8,7 @@ fi
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH:$HOME/.app/node/bin"
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH
 
@@ -37,6 +37,22 @@ fi
 # aliases pfx end
 
 unset rc
+
+# node
+export NODE_HOME="$HOME/.app/node/bin"
+case ":$PATH:" in
+  *":$NODE_HOME:"*) ;;
+  *) export PATH="$NODE_HOME:$PATH" ;;
+esac
+# node end
+
+# node_modules
+export NODE_MODULES_HOME="$HOME/.npm-global/bin"
+case ":$PATH:" in
+  *":$NODE_MODULES_HOME:"*) ;;
+  *) export PATH="$NODE_MODULES_HOME:$PATH" ;;
+esac
+# node_modules end
 
 # pnpm
 export PNPM_HOME="/home/donataskartanovicius/.local/share/pnpm"

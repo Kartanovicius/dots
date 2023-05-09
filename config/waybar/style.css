@@ -14,7 +14,7 @@
 thunar
 */
 
-@import "retro.css";
+@import "troll.css";
 
 @keyframes blink-warning {
     10% {
@@ -22,7 +22,7 @@ thunar
     }
 
     to {
-        color: @black;
+        color: @disabled;
         background-color: @orange;
     }
 }
@@ -33,7 +33,7 @@ thunar
     }
 
     to {
-        color: @black;
+        color: @disabled;
         background-color: @red;
     }
 }
@@ -83,7 +83,7 @@ window#waybar {
     margin: 1px 6px;
     background-color: @background;
     border-radius: 10px;
-    color: @blue;
+    color: @text;
 }
 
 /* -----------------------------------------------------------------------------
@@ -202,7 +202,7 @@ window#waybar {
 } */
 
 #workspaces button {
-    color: @black;
+    color: @disabled;
     min-width: 2rem;
 }
 
@@ -213,7 +213,7 @@ window#waybar {
 }
 
 #workspaces button.focused {
-    color: @blue;
+    color: @text;
     background: transparent;
 }
 

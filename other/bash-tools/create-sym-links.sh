@@ -55,6 +55,7 @@ replaceBySymLink ~/.config/waybar ~/Fedora/config/waybar
 replaceBySymLink ~/.config/htop ~/Fedora/config/htop
 replaceBySymLink ~/.config/wofi ~/Fedora/config/wofi
 replaceBySymLink ~/.config/kitty ~/Fedora/config/kitty
+replaceBySymLink ~/.config/rofi ~/Fedora/config/rofi
 
 replaceBySymLink ~/.bash_aliases ~/Fedora/other/bash_aliases
 replaceBySymLink ~/.bash_profile ~/Fedora/other/bash_profile

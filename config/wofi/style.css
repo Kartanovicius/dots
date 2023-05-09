@@ -2,16 +2,16 @@
 Arc-Dark Color Scheme
 */
 
-@define-color selectionBackground #374151;
+@define-color selectionBackground #70574E;
 
-@define-color background #111827;
-@define-color foreground #D1D5DB;
+@define-color background #412E26;
+@define-color foreground #C9BA8C;
 
-@define-color black #6B7280;
+@define-color disabled #87776C;
 @define-color red #FCA5A5;
 @define-color green #B1E3AD;
 @define-color orange #FBC19D;
-@define-color blue #BAE6FD;
+@define-color text #C9BA8C;
 @define-color purple #DDD6FE;
 @define-color cyan #BAE6FD;
 @define-color white #D1D5DB;
@@ -22,7 +22,7 @@ Arc-Dark Color Scheme
 
 window {
     border-radius: 18px;
-    color: @blue;
+    color: @text;
     position: relative;
     padding: 1px;
     background: @selectionBackground;
@@ -49,7 +49,7 @@ window {
 
 #outer-box {
     margin: 3px;
-    border-color: @blue;
+    border-color: @text;
     padding:15px;
     background-color: @background;
     border-radius: 18px;
