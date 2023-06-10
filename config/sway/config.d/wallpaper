@@ -1,2 +1,2 @@
-set $lockscreenbg ~/Pictures/wallpaper/troll.jpg
-output * bg ~/Pictures/wallpaper/troll.jpg fill
+set $lockscreenbg ~/Pictures/wallpaper/black-hole.png
+output * bg ~/Pictures/wallpaper/black-hole.png fill

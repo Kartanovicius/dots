@@ -1,0 +1,12 @@
+@define-color selectionBackground #F96E46;
+@define-color border #F96E46;
+
+@define-color background #000000;
+@define-color foreground #ffffff;
+
+@define-color disabled #cecece;
+@define-color error #E06C75;
+@define-color success #B1E3AD;
+@define-color warning #FBC19D;
+@define-color text #ffffff;
+@define-color white #F5F5F5;

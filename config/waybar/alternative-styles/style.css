@@ -11,7 +11,7 @@
  * -------------------------------------------------------------------------- */
 
 /*
-Black minimal design
+thunar
 */
 
 @import "black.css";
@@ -56,9 +56,8 @@ Black minimal design
 window#waybar {
     background-color: rgba(0,0,0,0);
     font-family: "JetBrains Mono", "Font Awesome 5 Free";
-    font-size: 12px;
-    font-weight: 500;
-    background-color: @background;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 /* Every modules */
@@ -81,8 +80,9 @@ window#waybar {
 #custom-media,
 #custom-PBPbattery {
     padding:0.25rem 0.75rem;
-    margin: 0;
+    margin: 1px 6px;
     background-color: @background;
+    border-radius: 10px;
     color: @text;
 }
 
@@ -92,10 +92,12 @@ window#waybar {
 
 #clock {
     margin-right: 0;
+    border-radius: 10px 0 0 10px;
 }
 
 #custom-weather {
     margin-left: 0;
+    border-radius: 0 10px 10px 0;
 }
 
 #battery {
@@ -212,24 +214,26 @@ window#waybar {
 
 #workspaces button.focused {
     color: @text;
-    font-weight: 900;
     background: transparent;
 }
 
 #workspaces button.urgent {
-    border-color: @warning;
-    color: @warning;
+    border-color: @error;
+    color: @error;
 }
 
 #custom-power {
+    font-size:18px;
     padding-right: 1rem;
 }
 
 #custom-launcher {
+    font-size:15px;
     margin-left:15px;
     margin-right:10px;
 }
 
 #backlight.icon {
     padding-right:1px;
+    font-size: 13px;
 }

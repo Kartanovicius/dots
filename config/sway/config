@@ -19,23 +19,24 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi --show drun
+set $menu rofi -modi "drun,run,ssh" -show drun -sidebar-mode
 set $powermenu ~/.config/waybar/scripts/power-menu.sh
 ### Output configuration
 #
 default_border none
 # Stablish gaps between windows and from the screen edge
-gaps inner 3
-gaps outer 5
+gaps inner 0
+gaps outer 0
 gaps top 0
 
 #
 # Example configuration:
 #
-output DP-1 pos 0 0
-output DP-2 pos 0 0
-output eDP-1 pos 0 1440 res 1920x1080
-output eDP-2 pos 0 1440 res 1920x1080
+output DP-1 pos 1080 0
+output DP-2 pos 1080 0 
+output eDP-1 pos 1080 1440
+output eDP-2 pos 1080 1440
+output HDMI-A-1 pos 0 0 res 1920x1080 transform 90
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
@@ -192,10 +193,9 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-#
-# Status Bar:
-#
 # Read `man 5 sway-bar` for more information about this section.
+
+
 bar {
     swaybar_command waybar
 
