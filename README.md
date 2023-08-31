@@ -1,12 +1,8 @@
-# DOTS owl
+# Nixos/Hyprland configuration
 
 ## Used packages
 
 DNF
-- sway
+- Hyprland
 - waybar
-- wofi
-- htop
-
-Flatpak
-- chromium
+- rofi
