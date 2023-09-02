@@ -19,8 +19,9 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu rofi -modi "drun,run,ssh" -show drun -sidebar-mode
-set $powermenu ~/.config/waybar/scripts/power-menu.sh
+set $menu exec rofi -modi "drun,run,ssh" -show drun -sidebar-mode
+set $powermenu rofi -show power-menu -modi power-menu:rofi-power-menu
+set $bluetooth rofi-bluetooth
 ### Output configuration
 #
 default_border none
@@ -34,7 +35,7 @@ gaps top 0
 #
 output DP-1 pos 1080 0
 output DP-2 pos 1080 0 
-output eDP-1 pos 1080 1440
+output eDP-1 pos 1080 1440 mode --custom 2560x1440@60Hz
 output eDP-2 pos 1080 1440
 output HDMI-A-1 pos 0 0 res 1920x1080 transform 90
 #
@@ -80,6 +81,8 @@ output HDMI-A-1 pos 0 0 res 1920x1080 transform 90
     # Exit sway (logs you out of your Wayland session)
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
     bindsym $mod+shift+e exec $powermenu
+
+    bindsym $mod+shift+b exec $bluetooth
 #
 # Moving around:
 #
@@ -205,3 +208,4 @@ bar {
 }
 
 include ~/.config/sway/config.d/*
+exec systemctl --user import-environment

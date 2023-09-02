@@ -1,8 +1,3 @@
 # Nixos/Hyprland configuration
 
-## Used packages
-
-DNF
-- Hyprland
-- waybar
-- rofi
+## Lenovo Thinkpad Extreme gen 1

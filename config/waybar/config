@@ -6,14 +6,15 @@
   "position": "top",
   "margin-top": 0,
   "margin-bottom": 0,
-	"output": ["eDP-1"],
+	"output": ["eDP-1", "eDP-2"],
 
   // If height property would be not present, it'd be calculated dynamically
   "height": 30,
 
   "modules-left": [
-    "sway/workspaces",
-    "custom/media"
+    //"hyprland/window",
+    "wlr/workspaces"
+    //"custom/media"
   ],
 
   "modules-center": [
@@ -24,7 +25,7 @@
     "temperature",
     "memory",
     "cpu",
-    "custom/keyboard-layout",
+    //"custom/keyboard-layout",
     "battery",
     "backlight#icon",
     "pulseaudio",
@@ -108,19 +109,6 @@
     "max-length": 120
   },
 
-  "sway/workspaces": {
-    "disable-scroll": true,
-    "disable-markup": false
-    // "all-outputs": true
-    // "format": " {icon} ",
-    // "format-icons": {
-    //   "1": " ",
-    //   "2": " ",
-    //   "3": "󰙯 ",
-    //   "4": " "
-    // }
-  },
-
   "pulseaudio": {
     "scroll-step": 1, // %, can be a float
     "format": "{icon} {volume}%",
@@ -144,8 +132,8 @@
 
   "pulseaudio#microphone": {
     "format": "{format_source}",
-    "format-source": " {volume}%",
-    "format-source-muted": "",
+    "format-source": " {volume}%",
+    "format-source-muted": "",
     "on-click": "pamixer --default-source -t",
     "on-click-right": "pavucontrol",
     "on-scroll-up": "pamixer --default-source -i 5",
@@ -204,90 +192,5 @@
     },
     "escape": true,
     "exec": "/usr/bin/python3 $HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null" // Script in resources folder
-  }
-},
-{
-  "layer": "top",
-  "position": "top",
-  "margin-top": 0,
-  "margin-bottom": 0,
-	"output": ["DP-1","DP-2"],
-
-  // If height property would be not present, it'd be calculated dynamically
-  "height": 30,
-
-  "modules-left": [
-    "sway/workspaces"
-  ],
-
-  "modules-center": [
-    "clock"
-  ],
-
-  "clock": {
-    "interval": 10,
-    "format-alt": " {:%e %b %Y (%A)}", // Icon: calendar-alt
-    "format": "{:%e %b %Y %H:%M}",
-    "tooltip-format": "{:%e %B %Y}"
-  },
-
-  "sway/mode": {
-    "format": "{}",
-    "tooltip": false
-  },
-
-  "sway/window": {
-    "format": "{}",
-    "max-length": 120
-  },
-
-  "sway/workspaces": {
-    "disable-scroll": true,
-    "disable-markup": false
-    // "all-outputs": true
-    // "format": " {icon} ",
-    // "format-icons": {
-    //   "1": " ",
-    //   "2": " ",
-    //   "3": "󰙯 ",
-    //   "4": " "
-    // }
-  }
-},
-{
-  "layer": "top",
-  "position": "top",
-  "margin-top": 0,
-  "margin-bottom": 0,
-	"output": ["HDMI-A-1"],
-
-  // If height property would be not present, it'd be calculated dynamically
-  "height": 30,
-
-  "modules-left": [
-    "sway/workspaces"
-  ],
-
-  "sway/mode": {
-    "format": "{}",
-    "tooltip": false
-  },
-
-  "sway/window": {
-    "format": "{}",
-    "max-length": 120
-  },
-
-  "sway/workspaces": {
-    "disable-scroll": true,
-    "disable-markup": false
-    // "all-outputs": true
-    // "format": " {icon} ",
-    // "format-icons": {
-    //   "1": " ",
-    //   "2": " ",
-    //   "3": "󰙯 ",
-    //   "4": " "
-    // }
   }
 }]

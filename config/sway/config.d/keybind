@@ -1,12 +1,14 @@
 # Screenshot
-bindsym Shift+Print exec grimshot --notify save area
-bindsym Shift+Ctrl+Print exec grimshot --notify copy area
+bindsym Shift+Print exec grim
+bindsym Shift+Ctrl+Print exec grim -g "$(slurp)" - | wl-copy && notify-send "screenshot taken"
 
 # Volume
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym XF86AudioRaiseVolume+Ctrl exec amixer set Master 1%+
+bindsym XF86AudioLowerVolume+Ctrl exec amixer set Master 1%-
 
 # Brightness
-bindsym --locked XF86MonBrightnessUp exec light -S "$(light -G | awk '{ print int(($1 + .72) * 1.4) }')"
-bindsym --locked XF86MonBrightnessDown exec light -S "$(light -G | awk '{ print int($1 / 1.4) }')"
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-

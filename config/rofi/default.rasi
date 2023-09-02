@@ -15,15 +15,33 @@ configuration {
 }
 
 * {
-    rad: 8px;
+    rad: 4px;
 
     background-color: @background;
     text-color: @foreground;
 }
 
+window {
+    /* properties for window widget */
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       1000px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    /* properties for all widgets */
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border-radius:               calc((4px * 2));
+    cursor:                      "default";
+}
+
 mainbox {
     children: [ inputbar, listview ];
-    padding: 3em;
+    padding: 1.5em;
     spacing: 1em;
 }
 
@@ -39,8 +57,7 @@ prompt, entry, element selected {
 }
 
 prompt {
-   padding: 1.5%;
-   font: "feather 14";
+   padding: 1%;
 }
 
 entry {
@@ -50,22 +67,30 @@ entry {
 }
 
 listview {
-    lines: 3;
-    columns: 4;
+    enabled: true;
+    lines: 10;
+    columns: 1;
     cycle: false;
+    dynamic: true;
 }
 
 element {
-    orientation: vertical;
-    padding: 1em;
+    orientation: horizontal;
+    padding: 0.5em;
     border-radius: @rad;
+    children: [ element-icon, element-text ];
+    spacing: 0.5em;
+}
+
+element-text {
+    vertical-align: 0.5;
 }
 
 element-text, element-icon {
-    horizontal-align: 0.5;
+    horizontal-align: 0;
     background-color: inherit;
 }
 
-element-icon { size: 48px; }
+element-icon { size: 1.5em; }
 listview, element, element selected, element-text, element-icon { cursor: pointer; }
 entry { cursor: text; }

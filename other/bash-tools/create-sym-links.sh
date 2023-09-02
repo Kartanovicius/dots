@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/run/current-system/sw/bin/sh
 
 function askBeforeReplace() {
   echo -e "$3"
@@ -50,19 +50,22 @@ function replaceBySymLink {
 echo -e "\033[01;35mSymLink replacing\033[00m"
 
 # .config
-replaceBySymLink ~/.config/sway ~/Fedora/config/sway
-replaceBySymLink ~/.config/waybar ~/Fedora/config/waybar
-replaceBySymLink ~/.config/htop ~/Fedora/config/htop
-replaceBySymLink ~/.config/wofi ~/Fedora/config/wofi
-replaceBySymLink ~/.config/kitty ~/Fedora/config/kitty
-replaceBySymLink ~/.config/rofi ~/Fedora/config/rofi
-replaceBySymLink ~/.config/i3 ~/Fedora/config/i3
+replaceBySymLink ~/.config/hypr ~/Yogurt/config/hypr
+replaceBySymLink ~/.config/ranger ~/Yogurt/config/ranger
+replaceBySymLink ~/.config/waybar ~/Yogurt/config/waybar
+replaceBySymLink ~/.config/htop ~/Yogurt/config/htop
+replaceBySymLink ~/.config/wofi ~/Yogurt/config/wofi
+replaceBySymLink ~/.config/kitty ~/Yogurt/config/kitty
+replaceBySymLink ~/.config/rofi ~/Yogurt/config/rofi
+replaceBySymLink ~/.config/mako ~/Yogurt/config/mako
+replaceBySymLink ~/.config/hypr ~/Yogurt/config/hypr
+replaceBySymLink ~/.config/nvim ~/Yogurt/config/nvim
 
-replaceBySymLink ~/.bash_aliases ~/Fedora/other/bash_aliases
-replaceBySymLink ~/.bash_profile ~/Fedora/other/bash_profile
-replaceBySymLink ~/.bash_pfx ~/Fedora/other/bash_pfx
-replaceBySymLink ~/.bashrc ~/Fedora/other/bashrc
+# Allias
+replaceBySymLink ~/.bash_aliases ~/Yogurt/other/bash_aliases
+replaceBySymLink ~/.bash_profile ~/Yogurt/other/bash_profile
+replaceBySymLink ~/.bash_pfx ~/Yogurt/other/bash_pfx
+replaceBySymLink ~/.bashrc ~/Yogurt/other/bashrc
 
 # others
-replaceBySymLink ~/vscode-workspaces ~/Fedora/other/vscode-workspaces
-replaceBySymLink ~/bash-tools ~/Fedora/other/bash-tools
+replaceBySymLink ~/bash-tools ~/Yogurt/other/bash-tools
