@@ -13,7 +13,6 @@ function askBeforeReplace() {
   fi
 }
 
-
 # Script for linking system files into git repository
 # $1: system configuration file or directory. This target wil be replaced by symlink
 # $2: source of symlink
@@ -36,7 +35,7 @@ function replaceBySymLink {
       STATUS="32m[new]"
       if [ -L $1 ]; then
         STATUS="32m[symlink replaced]"
-	rm $1
+        rm $1
       fi
       ln -s $2 $1
     fi
@@ -63,8 +62,6 @@ replaceBySymLink ~/.config/nvim ~/Yogurt/config/nvim
 
 # Allias
 replaceBySymLink ~/.bash_aliases ~/Yogurt/other/bash_aliases
-replaceBySymLink ~/.bash_profile ~/Yogurt/other/bash_profile
-replaceBySymLink ~/.bash_pfx ~/Yogurt/other/bash_pfx
 replaceBySymLink ~/.bashrc ~/Yogurt/other/bashrc
 
 # others

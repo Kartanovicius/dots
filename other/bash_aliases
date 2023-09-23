@@ -1,6 +1,0 @@
-alias donates='source ~/.bash_aliases && source ~/.bash_pfx && echo "Ja jsem Donates :)"'
-
-alias node-scripts='cat package.json | jq ".scripts"'
-
-alias gg='git status'
-alias node-scripts='cat package.json | jq ".scripts"'
