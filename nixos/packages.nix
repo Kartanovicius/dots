@@ -16,6 +16,8 @@
     # Browsers
     chromium
     firefox
+    brave
+    google-chrome
     # Media
     spotify
     vlc
@@ -29,6 +31,7 @@
     zip
     unzip
     etcher
+    logseq
     # Terminal
     kitty
     # Terminal video libs
@@ -52,6 +55,8 @@
     glxinfo
     ncdu
     toybox
+    hwinfo
+    lbreakouthd
     # System
     dconf
     xorg.xbacklight
@@ -61,9 +66,13 @@
     pinentry # Password prompt for rofi-rbw
     wtype # Required by rofi-rbw
     fzf
+    networkmanagerapplet
+    qrencode
+    chromedriver
     # IDE
     vscode
     neovim
+    jetbrains.idea-community
     # Messengers
     tdesktop
     # Password keeper
@@ -93,7 +102,6 @@
     # Gnome dark-theme
     gnome3.adwaita-icon-theme
     dracula-theme
-    #graphite-gtk-theme
     # ZSH plugins
     thefuck
     zsh-autosuggestions
@@ -112,6 +120,8 @@
     xdg-utils
     xdg-desktop-portal
     xdg-desktop-portal-gtk
+    # git clone
+    (import ./rofi-network-manager.nix { inherit pkgs; })
   ];
   nixpkgs.config.permittedInsecurePackages = [
     "electron-12.2.3"
@@ -143,18 +153,20 @@
       extensions = [
         "gighmmpiobklfepjocnamgkkbiglidom" # Adblock
         "cjpalhdlnbpafiamejdnhcphjbkeiagm" # uBlock Origin
-        "hjdoplcnndgiblooccencgcggcoihigg" # Terms of Service; Didn’t Read
         "gcbommkclmclpchllfjekcdonpmejbdp" # HTTPS Everywhere
         "fngmhnnpilhplaeedifhccceomclgfbg" # EditThisCookie
         "nngceckbapebfimnlniiiahkandclblb" # KeePassXC-Browser
         "fploionmjgeclbkemipmkogoaohcdbig" # Page load time
         "oldceeleldhonbafppcapldpdifcinji" # LT Grammar
         "mbniclmhobmnbdlbpiphghaielnnpgdp" # Lightshot screenshot
+        "gebbhagfogifgggkldgodflihgfeippi" # Youtube dislike
+        "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock for Youtube
+        "mdjildafknihdffpkfmmpnpoiajfjnjd" # Consent-O-Matic (Cookies)
       ];
     };
   };
 
-  #nixpkgs.overlays = [
+  # nixpkgs.overlays = [
   #  (self: super: {
   #    polkit = super.polkit.overrideAttrs (oldAttrs: {
   #    patches = oldAttrs.patches ++ [
@@ -164,5 +176,5 @@
   #      })];
   #    });
   #  })
-  #];
+  # ];
 }

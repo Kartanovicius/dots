@@ -25,6 +25,9 @@
       LIBGL_ALWAYS_SOFTWARE = "1";
       TERMCMD = "kitty";
       TERM  = "kitty";
+      XDG_CONFIG_HOME = "$HOME/.config";
+      LIBGL_DEBUG = "verbose";
+      LD_LIBRARY_PATH = "/run/opengl-driver/lib:/run/opengl-driver-32/lib";
     };
     shells = with pkgs; [ zsh ];
   };
