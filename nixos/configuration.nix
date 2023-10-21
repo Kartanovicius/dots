@@ -1,31 +1,32 @@
 { config, pkgs, lib, ... }:
 
+let
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz";
+in
 {
   imports =
     [
-      /home/donatask/Yogurt/nixos/packages.nix
-      /home/donatask/Yogurt/nixos/accelerator.nix
-      /home/donatask/Yogurt/nixos/zsh.nix
-      /home/donatask/Yogurt/nixos/environments.nix
+      (import "${home-manager}/nixos")
+      ./accelerator.nix
+      ./zsh.nix
+      ./environments.nix
+      ./polkit.nix
+      ./pkgs/packages.nix
     ];
 
-  security.polkit.enable = true;
-
-  systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.donatask = import ./home.nix;
   };
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+  services.blueman.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Prague";
@@ -45,20 +46,10 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the GNOME Desktop Environment. Change values to True for enabling gnome
-  # services.xserver.desktopManager.gnome.enable = false;
-  # services.gnome.gnome-keyring.enable = true;
-  # services.xserver.displayManager.sessionCommands = ''
-  #   ${lib.getBin pkgs.dbus}/bin/dbus-update-activation-environment --systemd --all
-  # '';
-  # services.xserver.displayManager.defaultSession = "hyprland";
-
-
   services = {
     xserver = {
       enable = true;
       layout = "us"; # keyboard layout
-      videoDrivers = ["nvidia"];
       excludePackages = with pkgs; [ xterm ];
       # Enable GDM
       displayManager = {
@@ -96,11 +87,11 @@
   xdg = {
     autostart.enable = true;
     portal = {
-      enable = true;
-      wlr.enable = true;
+      enable = false;
+      wlr.enable = false;
       extraPortals = with pkgs; [
         xdg-desktop-portal
-        xdg-desktop-portal-gtk 
+        xdg-desktop-portal-gtk
       ];
     };
   };
@@ -109,9 +100,9 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-  
+
   # Swaylock  
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
   security.pam.services.swaylock.fprintAuth = false;
 
   # VirtualBox

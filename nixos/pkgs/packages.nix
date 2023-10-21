@@ -1,21 +1,27 @@
 #Labukas
-{config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
+  imports = [
+    ./app/waybar.nix
+    ./app/chromium.nix
+  ];
+
   # Fonts
-  fonts.fonts = with pkgs; [
-    nerdfonts
-    jetbrains-mono
-    font-awesome
-    siji
-    noto-fonts-emoji
-  ];  
+  fonts.fonts = with pkgs;
+    [
+      nerdfonts
+      jetbrains-mono
+      font-awesome
+      siji
+      noto-fonts-emoji
+    ];
 
   #Packages
   environment.systemPackages = with pkgs; [
+    home-manager
     # Browsers
     chromium
-    firefox
     brave
     google-chrome
     # Media
@@ -46,7 +52,6 @@
     # Dev
     yarn
     nodejs_16
-    postman
     git
     tig
     # System information
@@ -69,26 +74,22 @@
     networkmanagerapplet
     qrencode
     chromedriver
+    bluez
     # IDE
     vscode
     neovim
     jetbrains.idea-community
     # Messengers
     tdesktop
-    # Password keeper
-    rbw
     # Rofi
     rofi-power-menu
-    rofi-wayland
     rofi-bluetooth
     buku # TODO: add gitlab and jira bookmarks
-    rofi-rbw
     # Screen Recording and Capture
     wf-recorder # Screen Recorder
     slurp
     grim
     # Hyprland/Sway
-    waybar
     hyprpaper
     swaylock
     swayidle
@@ -99,6 +100,12 @@
     xdg-utils
     wdisplays
     hyprpicker # Color Picker
+    meson
+    wayland-protocols
+    wayland-utils
+    wl-clipboard
+    wlroots
+    eww-wayland
     # Gnome dark-theme
     gnome3.adwaita-icon-theme
     dracula-theme
@@ -113,15 +120,15 @@
     gnome.gnome-keyring
     gnome.seahorse
     packagekit
+    libsForQt5.polkit-kde-agent
     # New
-    nvidia-vaapi-driver
     hyprland-protocols
     xdg-desktop-portal-hyprland
     xdg-utils
     xdg-desktop-portal
     xdg-desktop-portal-gtk
-    # git clone
-    (import ./rofi-network-manager.nix { inherit pkgs; })
+    # LSP
+    nixpkgs-fmt
   ];
   nixpkgs.config.permittedInsecurePackages = [
     "electron-12.2.3"
@@ -131,38 +138,10 @@
   programs = {
     hyprland = {
       enable = true;
-      nvidiaPatches = true;
       xwayland = {
         hidpi = true;
         enable = true;
       };
-    };
-    waybar.package = pkgs.waybar.overrideAttrs (oa: {
-      mesonFlags = (oa.mesonFlags or  []) ++ [ "-Dexperimental=true" ];
-      patches = (oa.patches or []) ++ [
-        (pkgs.fetchpatch {
-          name = "fix waybar hyprctl";
-          url = "https://aur.archlinux.org/cgit/aur.git/plain/hyprctl.patch?h=waybar-hyprland-git";
-          sha256 = "sha256-pY3+9Dhi61Jo2cPnBdmn3NUTSA8bAbtgsk2ooj4y7aQ=";
-        })
-      ];
-    });
-
-    chromium = {
-      enable = true;
-      extensions = [
-        "gighmmpiobklfepjocnamgkkbiglidom" # Adblock
-        "cjpalhdlnbpafiamejdnhcphjbkeiagm" # uBlock Origin
-        "gcbommkclmclpchllfjekcdonpmejbdp" # HTTPS Everywhere
-        "fngmhnnpilhplaeedifhccceomclgfbg" # EditThisCookie
-        "nngceckbapebfimnlniiiahkandclblb" # KeePassXC-Browser
-        "fploionmjgeclbkemipmkogoaohcdbig" # Page load time
-        "oldceeleldhonbafppcapldpdifcinji" # LT Grammar
-        "mbniclmhobmnbdlbpiphghaielnnpgdp" # Lightshot screenshot
-        "gebbhagfogifgggkldgodflihgfeippi" # Youtube dislike
-        "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock for Youtube
-        "mdjildafknihdffpkfmmpnpoiajfjnjd" # Consent-O-Matic (Cookies)
-      ];
     };
   };
 

@@ -49,20 +49,17 @@ function replaceBySymLink {
 echo -e "\033[01;35mSymLink replacing\033[00m"
 
 # .config
-replaceBySymLink ~/.config/hypr ~/Yogurt/config/hypr
-replaceBySymLink ~/.config/ranger ~/Yogurt/config/ranger
-replaceBySymLink ~/.config/waybar ~/Yogurt/config/waybar
-replaceBySymLink ~/.config/htop ~/Yogurt/config/htop
-replaceBySymLink ~/.config/wofi ~/Yogurt/config/wofi
-replaceBySymLink ~/.config/kitty ~/Yogurt/config/kitty
-replaceBySymLink ~/.config/rofi ~/Yogurt/config/rofi
-replaceBySymLink ~/.config/mako ~/Yogurt/config/mako
-replaceBySymLink ~/.config/hypr ~/Yogurt/config/hypr
-replaceBySymLink ~/.config/nvim ~/Yogurt/config/nvim
+replaceBySymLink ~/.config/hypr ~/Pukis/config/hypr
+replaceBySymLink ~/.config/ranger ~/Pukis/config/ranger
+replaceBySymLink ~/.config/waybar ~/Pukis/config/waybar
+replaceBySymLink ~/.config/htop ~/Pukis/config/htop
+replaceBySymLink ~/.config/wofi ~/Pukis/config/wofi
+replaceBySymLink ~/.config/kitty ~/Pukis/config/kitty
+replaceBySymLink ~/.config/rofi ~/Pukis/config/rofi
+replaceBySymLink ~/.config/mako ~/Pukis/config/mako
+replaceBySymLink ~/.config/hypr ~/Pukis/config/hypr
+replaceBySymLink ~/.config/nvim ~/Pukis/config/nvim
+replaceBySymLink ~/.config/home-manager ~/Pukis/config/home-manager
 
 # Allias
-replaceBySymLink ~/.bash_aliases ~/Yogurt/other/bash_aliases
-replaceBySymLink ~/.bashrc ~/Yogurt/other/bashrc
-
-# others
-replaceBySymLink ~/bash-tools ~/Yogurt/other/bash-tools
+replaceBySymLink ~/.bashrc ~/Pukis/other/bashrc
