@@ -1,7 +1,5 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/Kartanovicius/dots"><img src="https://raw.githubusercontent.com/Kartanovicius/dots/master/public/logo.png" alt="Markdownify" width="300"></a>
-  <br>
   Nixos/Hyprland Config
   <br>
 </h1>
@@ -15,7 +13,7 @@
   <a href="#license">License</a>
 </p>
 
-![screenshot](https://raw.githubusercontent.com/Kartanovicius/dots/master/public/screenshot.png)
+![screenshot](https://raw.githubusercontent.com/Kartanovicius/dots/master/public/screenshot.jpg)
 
 ## Hardware
 Lenovo ThinkPad T14 gen 3 (AMD)
