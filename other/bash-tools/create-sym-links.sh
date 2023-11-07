@@ -54,12 +54,9 @@ replaceBySymLink ~/.config/ranger ~/Pukis/config/ranger
 replaceBySymLink ~/.config/waybar ~/Pukis/config/waybar
 replaceBySymLink ~/.config/htop ~/Pukis/config/htop
 replaceBySymLink ~/.config/wofi ~/Pukis/config/wofi
-replaceBySymLink ~/.config/kitty ~/Pukis/config/kitty
-replaceBySymLink ~/.config/rofi ~/Pukis/config/rofi
 replaceBySymLink ~/.config/mako ~/Pukis/config/mako
-replaceBySymLink ~/.config/hypr ~/Pukis/config/hypr
 replaceBySymLink ~/.config/nvim ~/Pukis/config/nvim
-replaceBySymLink ~/.config/home-manager ~/Pukis/config/home-manager
+replaceBySymLink ~/.config/buku ~/Pukis/config/buku
 
 # Allias
 replaceBySymLink ~/.bashrc ~/Pukis/other/bashrc
