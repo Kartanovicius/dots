@@ -4,7 +4,6 @@
 {
   imports = [
     ./app/waybar.nix
-    ./app/chromium.nix
   ];
 
   # Fonts
@@ -21,7 +20,6 @@
   environment.systemPackages = with pkgs; [
     home-manager
     # Browsers
-    chromium
     brave
     google-chrome
     # Media
@@ -38,6 +36,7 @@
     unzip
     etcher
     logseq
+    freetube
     # Terminal
     kitty
     # Terminal video libs
@@ -70,7 +69,6 @@
     polkit_gnome
     pinentry # Password prompt for rofi-rbw
     wtype # Required by rofi-rbw
-    fzf
     networkmanagerapplet
     qrencode
     chromedriver
@@ -81,10 +79,6 @@
     jetbrains.idea-community
     # Messengers
     tdesktop
-    # Rofi
-    rofi-power-menu
-    rofi-bluetooth
-    buku # TODO: add gitlab and jira bookmarks
     # Screen Recording and Capture
     wf-recorder # Screen Recorder
     slurp
@@ -109,10 +103,6 @@
     # Gnome dark-theme
     gnome3.adwaita-icon-theme
     dracula-theme
-    # ZSH plugins
-    thefuck
-    zsh-autosuggestions
-    zsh-history
     # Keyring and Polkit
     polkit_gnome
     libgnome-keyring
@@ -135,25 +125,4 @@
     "nodejs-16.20.2"
   ];
 
-  programs = {
-    hyprland = {
-      enable = true;
-      xwayland = {
-        hidpi = true;
-        enable = true;
-      };
-    };
-  };
-
-  # nixpkgs.overlays = [
-  #  (self: super: {
-  #    polkit = super.polkit.overrideAttrs (oldAttrs: {
-  #    patches = oldAttrs.patches ++ [
-  #      (super.fetchpatch {
-  #        url = "https://gitlab.freedesktop.org/polkit/polkit/-/commit/716a273ce0af467968057f3e107156182bd290b0.patch";
-  #        sha256 = "sha256-hOJJhUmxXm87W1ZU9Y1NJ8GCyKvPjbIVtCHlhRGlN8k=";
-  #      })];
-  #    });
-  #  })
-  # ];
 }

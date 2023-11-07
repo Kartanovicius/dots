@@ -8,7 +8,6 @@ in
     [
       (import "${home-manager}/nixos")
       ./accelerator.nix
-      ./zsh.nix
       ./environments.nix
       ./polkit.nix
       ./pkgs/packages.nix
@@ -51,50 +50,36 @@ in
       enable = true;
       layout = "us"; # keyboard layout
       excludePackages = with pkgs; [ xterm ];
-      # Enable GDM
-      displayManager = {
-        lightdm.enable = false;
-        defaultSession = "hyprland";
-        gdm = {
-          enable = true;
-          debug = true;
-          wayland = true;
-        };
-        sessionCommands = ''
-          ${lib.getBin pkgs.dbus}/bin/dbus-update-activation-environment --systemd --all
-          ${lib.getBin pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY
-          eval $(ssh-agent)
-          eval $(gnome-keyring-daemon --start)
-        '';
-      };
-      desktopManager = {
-        gnome.enable = false;
-        xterm.enable = false;
-      };
-      # Enable TouchInputs
       libinput.enable = true;
+      # Enable GDM
+      displayManager.gdm = {
+        enable = true;
+        wayland = true;
+      };
     };
     dbus.enable = true;
+    gvfs.enable = true;
+    tumbler.enable = true;
     gnome = {
-      # gnome-remote-desktop.enable = true;
-      gnome-keyring.enable = true;
       sushi.enable = true;
-      # gnome-user-share.enable = true;
-      # core-shell.enable = true;
+      gnome-keyring.enable = true;
     };
   };
 
   xdg = {
     autostart.enable = true;
     portal = {
-      enable = false;
-      wlr.enable = false;
+      enable = true;
+      wlr.enable = true;
       extraPortals = with pkgs; [
         xdg-desktop-portal
         xdg-desktop-portal-gtk
       ];
     };
   };
+
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
 
   security.pam.services.gdm.enableGnomeKeyring = true;
 

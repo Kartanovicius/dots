@@ -1,20 +1,28 @@
 #Labukas
 { config, pkgs, lib, ... }:
 
+let
+  buku-run =
+    pkgs.writeShellScriptBin "buku-run" (builtins.readFile ./buku-run);
+in
 {
+  home.packages = with pkgs; [
+    rofi-power-menu
+    rofi-bluetooth
+    buku
+    buku-run
+  ];
+
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
     plugins = with pkgs; [
       rofi-emoji
       rofi-calc
-      rofi-power-menu
-      rofi-bluetooth
-      buku
     ];
-    font = "JetBrainsMono Nerd Font 10";
+    font = "JetBrainsMono Nerd Font 12";
     extraConfig = {
-      modes = "window,drun,run,ssh,combi,calc,buku,power-menu:rofi-power-menu,buku:buku";
+      modes = "window,drun,run,calc,power-menu:rofi-power-menu";
     };
     theme =
       let
