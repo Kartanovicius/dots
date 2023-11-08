@@ -125,4 +125,13 @@
     "nodejs-16.20.2"
   ];
 
+  programs = {
+    hyprland = {
+      enable = true;
+      xwayland = {
+        hidpi = true;
+        enable = true;
+      };
+    };
+  };
 }
