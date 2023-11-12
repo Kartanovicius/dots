@@ -2,6 +2,7 @@
 
 let
   zsh_plugins = import ./zsh_plugins.nix { pkgs = pkgs; };
+  configDir = ".config/zsh";
   p10kTheme = ./config/.p10k.zsh;
 in
 {
@@ -15,7 +16,7 @@ in
   programs.zsh = {
     enable = true;
     autocd = true;
-    dotDir = "./config";
+    dotDir = configDir;
     enableAutosuggestions = true;
     enableCompletion = true;
     plugins = with zsh_plugins; builtins.trace "++zsh plugin list: ${lib.concatMapStringsSep "," (x: x.name) plugin_list}" (plugin_list);
