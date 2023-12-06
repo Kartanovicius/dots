@@ -9,16 +9,16 @@
       "cjpalhdlnbpafiamejdnhcphjbkeiagm" # uBlock Origin
       "gcbommkclmclpchllfjekcdonpmejbdp" # HTTPS Everywhere
       "fngmhnnpilhplaeedifhccceomclgfbg" # EditThisCookie
-      "nngceckbapebfimnlniiiahkandclblb" # KeePassXC-Browser
       "fploionmjgeclbkemipmkogoaohcdbig" # Page load time
       "oldceeleldhonbafppcapldpdifcinji" # LT Grammar
-      "mbniclmhobmnbdlbpiphghaielnnpgdp" # Lightshot screenshot
+      "mbniclmhobmnbdlbpiphghaielnnpgdp" # Lightshot screenshot // fix
       "gebbhagfogifgggkldgodflihgfeippi" # Youtube dislike
       "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock for Youtube
       "mdjildafknihdffpkfmmpnpoiajfjnjd" # Consent-O-Matic (Cookies)
       "ghmbeldphafepmbegfdlkpapadhbakde" # Proton Pass
       "eifepbfdgonblafppielmnnihcopdlpo" # Mixpanel Tools
       "dhdgffkkebhmkfjojejmpbldmpobfkfo" # Tampermonkey
+      "mpdajninpobndbfcldcmbpnnbhibjmch" # SAML tracer
     ];
   };
 }

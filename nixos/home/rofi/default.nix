@@ -22,7 +22,12 @@ in
     ];
     font = "JetBrainsMono Nerd Font 12";
     extraConfig = {
-      modes = "window,drun,run,calc,power-menu:rofi-power-menu";
+      modi = "drun,emoji,ssh";
+      kb-primary-paste = "Control+V,Shift+Insert";
+      kb-secondary-paste = "Control+v,Insert";
+      display-drun = "Applications:";
+      display-window = "Windows:";
+      drun-display-format = "{name}";
     };
     theme =
       let
@@ -119,7 +124,6 @@ in
         "entry" = {
           blink = false;
           padding = mkLiteral "0 1.5% 0 0";
-          placeholder = "Search through apps";
         };
         "listview" = {
           enabled = true;
