@@ -16,7 +16,7 @@ in
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.donatask = import ./home.nix;
+    users.donatask = import ./home;
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -51,10 +51,19 @@ in
       layout = "us"; # keyboard layout
       excludePackages = with pkgs; [ xterm ];
       libinput.enable = true;
-      # Enable GDM
-      displayManager.gdm = {
-        enable = true;
-        wayland = true;
+      displayManager = {
+        gdm = {
+          enable = true;
+          wayland = true;
+        };
+        session = [{
+          manage = "window";
+          name = "river";
+          start = ''
+            				river &
+            				waitPID=$!
+            			'';
+        }];
       };
     };
     dbus.enable = true;
@@ -65,16 +74,13 @@ in
       gnome-keyring.enable = true;
     };
   };
+  programs.dconf.enable = true;
 
   xdg = {
     autostart.enable = true;
     portal = {
       enable = true;
       wlr.enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal
-        xdg-desktop-portal-gtk
-      ];
     };
   };
 
