@@ -2,10 +2,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [
-    ./app/waybar.nix
-  ];
-
   # Fonts
   fonts.fonts = with pkgs;
     [
@@ -37,6 +33,7 @@
     etcher
     logseq
     freetube
+    gphoto2
     # Terminal
     kitty
     # Terminal video libs
@@ -52,7 +49,9 @@
     yarn
     nodejs_16
     git
+    lazygit
     tig
+    bun
     # System information
     htop
     libnotify
@@ -88,7 +87,7 @@
     swaylock
     swayidle
     mako # notification daemon
-    #kanshi
+    kanshi
     xwayland
     glib
     xdg-utils
@@ -113,25 +112,20 @@
     libsForQt5.polkit-kde-agent
     # New
     hyprland-protocols
-    xdg-desktop-portal-hyprland
     xdg-utils
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
     # LSP
     nixpkgs-fmt
+    # River WM
+    swaybg
+    river
   ];
   nixpkgs.config.permittedInsecurePackages = [
     "electron-12.2.3"
     "nodejs-16.20.2"
   ];
 
-  programs = {
-    hyprland = {
-      enable = true;
-      xwayland = {
-        hidpi = true;
-        enable = true;
-      };
-    };
+  programs.htop = {
+    enable = true;
+    settings.show_cpu_temperature = 1;
   };
 }
