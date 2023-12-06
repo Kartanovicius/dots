@@ -14,7 +14,22 @@
 Black minimal design
 */
 
-@import "black.css";
+@define-color selectionBackground #F96E46;
+@define-color border #F96E46;
+
+@define-color background #000000;
+@define-color foreground #FFFFFF;
+
+@define-color disabled #CECECE;
+@define-color error #E06C75;
+@define-color success #B1E3AD;
+@define-color warning #FBC19D;
+@define-color text #FFFFFF;
+@define-color white #F5F5F5;
+
+@define-color selected #FFFFFF;
+@define-color occupied #7C7B7B;
+@define-color urgent #E06C75;
 
 @keyframes blink-warning {
     10% {
@@ -122,10 +137,6 @@ window#waybar {
     animation-duration: 2s;
 }
 
-/* #cpu {
-    background-color: #f7768e;
-} */
-
 #cpu.warning {
     color: @warning;
 }
@@ -170,10 +181,6 @@ window#waybar {
     border-radius: 10px 0 0 10px;
 }
 
-/* #pulseaudio.muted { */
-/*     color: #ff4499; */
-/* } */
-/**/
 #pulseaudio.microphone {
     border-left: 0px;
     border-right: 0px;
@@ -182,22 +189,9 @@ window#waybar {
     border-radius: 0 10px 10px 0;
 }
 
-/* #pulseaudio.microphone.muted { */
-/*     color: #ff4499; */
-/* } */
-
-
 #temperature.critical {
     color: @error;
 }
-
-/* #window {
-    font-weight: bold;
-} */
-
-/* #custom-media {
-    background-color: #bb9af7;
-} */
 
 #workspaces button {
     color: @disabled;

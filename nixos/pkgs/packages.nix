@@ -54,6 +54,7 @@
     bun
     # System information
     htop
+    btop
     libnotify
     glxinfo
     ncdu
