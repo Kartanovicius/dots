@@ -233,3 +233,16 @@ window#waybar {
 #backlight.icon {
     padding-right:1px;
 }
+
+#tags button.occupied {
+    color: @occupied;
+}
+
+
+#tags button.urgent {
+    color: @urgent;
+}
+
+#tags button.focused {
+    color: @selected;
+}

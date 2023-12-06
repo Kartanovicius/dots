@@ -57,6 +57,7 @@ replaceBySymLink ~/.config/wofi ~/Pukis/config/wofi
 replaceBySymLink ~/.config/mako ~/Pukis/config/mako
 replaceBySymLink ~/.config/nvim ~/Pukis/config/nvim
 replaceBySymLink ~/.config/buku ~/Pukis/config/buku
+replaceBySymLink ~/.config/river ~/Pukis/config/river
 
 # Allias
 replaceBySymLink ~/.bashrc ~/Pukis/other/bashrc

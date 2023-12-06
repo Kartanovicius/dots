@@ -2,6 +2,7 @@
 { config, pkgs, lib, ... }:
 
 {
+  #Fix for hyprland
   programs.waybar = {
     enable = true;
   };
