@@ -19,6 +19,7 @@
       "eifepbfdgonblafppielmnnihcopdlpo" # Mixpanel Tools
       "dhdgffkkebhmkfjojejmpbldmpobfkfo" # Tampermonkey
       "mpdajninpobndbfcldcmbpnnbhibjmch" # SAML tracer
+      "cofdbpoegempjloogbagkncekinflcnj" # DeepL
     ];
   };
 }

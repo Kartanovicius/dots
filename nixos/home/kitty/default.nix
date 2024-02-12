@@ -20,5 +20,6 @@
       package = pkgs.jetbrains-mono;
       size = 11;
     };
+    shellIntegration.enableZshIntegration = true;
   };
 }

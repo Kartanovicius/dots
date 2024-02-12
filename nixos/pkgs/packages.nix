@@ -3,7 +3,7 @@
 
 {
   # Fonts
-  fonts.fonts = with pkgs;
+  fonts.packages = with pkgs;
     [
       nerdfonts
       jetbrains-mono
@@ -21,55 +21,56 @@
     # Media
     spotify
     vlc
-    nomacs
-    # Apps
+    # GUI Apps
     libsForQt5.kcalc
-    ranger
     gparted
-    imagemagick
     meld
+    etcher
+    libreoffice
+    kanshi
+    pcmanfm
+    # CLI Apps
+    ranger
+    imagemagick
     zip
     unzip
-    etcher
-    logseq
-    freetube
-    gphoto2
     # Terminal
     kitty
     # Terminal video libs
     ffmpegthumbnailer
     ffmpeg
-    # Scripts
+    # Shell
     jq
     wget
     tmux
     curl
     wl-clipboard
+    meson
     # Dev
+    nodejs_18
     yarn
-    nodejs_16
-    git
-    lazygit
-    tig
     bun
+    git
+    tig
+    lazygit
+    nodePackages.pnpm
+    nodePackages.prettier
+    nodePackages.typescript-language-server
+    typescript
+    sdkmanager
     # System information
     htop
     btop
     libnotify
-    glxinfo
-    ncdu
     toybox
     hwinfo
-    lbreakouthd
+    pavucontrol
+    helvum
     # System
     dconf
     xorg.xbacklight
     brightnessctl
     lm_sensors
-    polkit_gnome
-    pinentry # Password prompt for rofi-rbw
-    wtype # Required by rofi-rbw
-    networkmanagerapplet
     qrencode
     chromedriver
     bluez
@@ -77,24 +78,26 @@
     vscode
     neovim
     jetbrains.idea-community
+    jetbrains-toolbox
+    lapce
+    android-studio
     # Messengers
     tdesktop
     # Screen Recording and Capture
-    wf-recorder # Screen Recorder
+    wf-recorder
     slurp
     grim
     # Hyprland/Sway
     hyprpaper
     swaylock
     swayidle
+    swaybg
     mako # notification daemon
-    kanshi
     xwayland
     glib
     xdg-utils
     wdisplays
     hyprpicker # Color Picker
-    meson
     wayland-protocols
     wayland-utils
     wl-clipboard
@@ -104,25 +107,26 @@
     gnome3.adwaita-icon-theme
     dracula-theme
     # Keyring and Polkit
-    polkit_gnome
     libgnome-keyring
     gnome.libgnome-keyring
     gnome.gnome-keyring
     gnome.seahorse
-    packagekit
-    libsForQt5.polkit-kde-agent
+    # packagekit
+    lxde.lxsession
     # New
     hyprland-protocols
     xdg-utils
     # LSP
     nixpkgs-fmt
     # River WM
-    swaybg
     river
   ];
   nixpkgs.config.permittedInsecurePackages = [
-    "electron-12.2.3"
+    "electron-25.9.0"
+    "electron-19.1.9"
+    "nodejs-18.18.2"
     "nodejs-16.20.2"
+    "nodejs-16.20.0"
   ];
 
   programs.htop = {

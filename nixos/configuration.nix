@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz";
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
 in
 {
   imports =
@@ -11,6 +11,7 @@ in
       ./environments.nix
       ./polkit.nix
       ./pkgs/packages.nix
+      ./lib
     ];
 
   home-manager = {
@@ -51,19 +52,13 @@ in
       layout = "us"; # keyboard layout
       excludePackages = with pkgs; [ xterm ];
       libinput.enable = true;
+      # desktopManager.gnome.enable = true;
       displayManager = {
         gdm = {
           enable = true;
           wayland = true;
+          debug = true;
         };
-        session = [{
-          manage = "window";
-          name = "river";
-          start = ''
-            				river &
-            				waitPID=$!
-            			'';
-        }];
       };
     };
     dbus.enable = true;
@@ -76,13 +71,17 @@ in
   };
   programs.dconf.enable = true;
 
-  xdg = {
-    autostart.enable = true;
-    portal = {
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+    ];
+    wlr = {
       enable = true;
-      wlr.enable = true;
     };
   };
+  xdg.portal.config.common.default = "wlr";
+  # xdg.portal.wlr.enable = true;
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
@@ -97,8 +96,8 @@ in
   security.pam.services.swaylock.fprintAuth = false;
 
   # VirtualBox
-  #virtualisation.virtualbox.host.enable = true;
-  #virtualisation.virtualbox.host.enableExtensionPack = true;
-  #virtualisation.virtualbox.guest.enable = true;
-  #users.extraGroups.vboxusers.members = [ "donatask" ];
+  # virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enableExtensionPack = true;
+  # virtualisation.virtualbox.guest.enable = true;
+  # users.extraGroups.vboxusers.members = [ "donatask" ];
 }

@@ -19,7 +19,7 @@ riverctl background-color       0x000000
 riverctl border-color-focused   0x6B998Eee
 riverctl border-color-unfocused   0x595959aa
 find "${HOME}/Pictures/wallpaper/" -type f | shuf -n1 | read WALLPAPER
-spawn_once swaybg -m fill -i "${HOME}/Pictures/wallpaper/w1.jpg"
+spawn_once swaybg -m fill -i "${HOME}/Pictures/wallpaper/w2.jpg"
 riverctl border-width 5
 riverctl xcursor-theme tarazed
 gsettings set org.gnome.desktop.interface      gtk-theme     Adwaita

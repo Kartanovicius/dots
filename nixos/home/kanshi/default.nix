@@ -10,6 +10,7 @@
         outputs = [
           {
             criteria = "eDP-1";
+            position = "0,0";
           }
         ];
       };
@@ -33,6 +34,30 @@
           }
           {
             criteria = "DP-2";
+            position = "0,0";
+          }
+        ];
+      };
+      dockedDaisyChain1 = {
+        outputs = [
+          {
+            criteria = "eDP-1";
+            position = "300,1440";
+          }
+          {
+            criteria = "DP-7";
+            position = "0,0";
+          }
+        ];
+      };
+      dockedDaisyChain2 = {
+        outputs = [
+          {
+            criteria = "eDP-1";
+            position = "300,1440";
+          }
+          {
+            criteria = "DP-8";
             position = "0,0";
           }
         ];

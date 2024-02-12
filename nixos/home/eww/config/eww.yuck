@@ -1,7 +1,5 @@
-(defwindow notifications
-  :monitor 0
-  :geometry (geometry :x "20px"
-                      :y "20px"
-                      :anchor "top right")
-  :stacking "overlay"
-  (label :text "Testus"))
+(include "./yuck/_vars.yuck")
+(include "./yuck/bar/_init.yuck")
+(include "./yuck/control/_init.yuck")
+(include "./yuck/dash/_init.yuck")
+(include "./yuck/moment/_init.yuck")

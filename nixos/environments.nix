@@ -11,7 +11,7 @@
       TERMCMD = "kitty";
       TERM = "kitty";
       XDG_CONFIG_HOME = "$HOME/.config";
-      WALLPAPER = "~/Pictures/wallpaper/w1.jpg";
+      WALLPAPER = "~/Pictures/wallpaper/w2.jpg";
       LIBSEAT_BACKEND = "logind";
     };
     shells = with pkgs; [ zsh ];

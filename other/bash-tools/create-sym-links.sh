@@ -51,7 +51,7 @@ echo -e "\033[01;35mSymLink replacing\033[00m"
 # .config
 replaceBySymLink ~/.config/hypr ~/Pukis/config/hypr
 replaceBySymLink ~/.config/ranger ~/Pukis/config/ranger
-replaceBySymLink ~/.config/waybar ~/Pukis/config/waybar
+#replaceBySymLink ~/.config/waybar ~/Pukis/config/waybar
 replaceBySymLink ~/.config/htop ~/Pukis/config/htop
 replaceBySymLink ~/.config/wofi ~/Pukis/config/wofi
 replaceBySymLink ~/.config/mako ~/Pukis/config/mako

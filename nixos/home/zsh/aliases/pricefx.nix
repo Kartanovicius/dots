@@ -13,7 +13,7 @@ in
       tmux select-layout -t pfx tiled;
       tmux attach-session -t pfx;
     '';
-    pfx-sfdc-run = "yarn --cwd ${pfx-folder}/packages/pricefx-sfcd-canvas start";
+    pfx-sfdc-run = "export NODE_OPTIONS=--openssl-legacy-provider; yarn --cwd ${pfx-folder}/packages/pricefx-sfcd-canvas start";
     pfx-module-run = "yarn --cwd ${pfx-folder}/packages/pricefx-modules start";
     pfx-sugarcrm = "cd ~/Pricefx/pricefx-clients-js/packages/pricefx-crm-extensions/sugarCRM";
     pfx-create-sugar-crm-zip = ''

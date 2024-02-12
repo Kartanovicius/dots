@@ -39,5 +39,4 @@ in
     enable = true;
     enableZshIntegration = true;
   };
-
 }

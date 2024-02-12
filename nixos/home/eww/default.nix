@@ -3,7 +3,7 @@
 {
   programs.eww = {
     enable = true;
-    configDir = ./config;
+    configDir = /home/donatask/Pukis/nixos/home/eww/config;
     package = pkgs.eww-wayland;
   };
 }
