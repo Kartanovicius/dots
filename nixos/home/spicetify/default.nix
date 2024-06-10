@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 let
-  spicetify-nix = builtins.getFlake "github:the-argus/spicetify-nix/a28f1041b05496e06740baf47a9e8f5665d63dcb";
+  spicetify-nix = builtins.getFlake "github:MichaelPachec0/spicetify-nix/e82a3a5597af46a0fbf2bbb18b6aa7fbf7125fac";
   spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
 in
 {
@@ -16,8 +16,8 @@ in
   programs.spicetify =
     {
       enable = true;
-      theme = spicePkgs.themes.catppuccin;
-      colorScheme = "mocha";
+      theme = spicePkgs.themes.Ziro;
+      colorScheme = "gray-dark";
 
       enabledExtensions = with spicePkgs.extensions; [
         fullAppDisplay

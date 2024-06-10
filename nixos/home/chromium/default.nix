@@ -21,5 +21,9 @@
       "mpdajninpobndbfcldcmbpnnbhibjmch" # SAML tracer
       "cofdbpoegempjloogbagkncekinflcnj" # DeepL
     ];
+    commandLineArgs = [
+      "--force-dark-mode"
+      "--ignore-gpu-blocklist"
+    ];
   };
 }

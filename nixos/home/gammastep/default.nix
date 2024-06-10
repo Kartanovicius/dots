@@ -1,4 +1,3 @@
-#Labukas
 { config, pkgs, lib, ... }:
 
 {

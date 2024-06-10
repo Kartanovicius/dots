@@ -13,6 +13,12 @@
       ./waybar
       ./gammastep
       ./kanshi
+      ./zoxide
+      ./gtk
+      ./firefox
+      # ./eclipse
+      # ./vscode
+      # ./nvim
       ../lib
     ];
   home.stateVersion = "23.11";

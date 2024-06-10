@@ -31,6 +31,7 @@ in
       autopair-init
       bindkey '^g' jump
       zle -N jump
+      eval "$(zoxide init zsh)"
     '';
 
   };

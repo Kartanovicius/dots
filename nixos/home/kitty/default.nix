@@ -14,7 +14,7 @@
     extraConfig = ''
       symbol_map U+E0A0-U+E0A2,U+E0B0-U+E0B3 PowerlineSymbols
     '';
-    theme = "Monokai Pro";
+    theme = "Brogrammer";
     font = {
       name = "JetBrains Mono";
       package = pkgs.jetbrains-mono;

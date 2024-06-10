@@ -3,16 +3,17 @@ with lib; rec {
   # color-related functions
 
   # convert rrggbb hex to #rrggbb
-  x = c: "#${c}";
+  x = c: "${c}";
 
   # convert rrggbb hex to rgba(r, g, b, a) css
   rgba = c:
     let
-      r = toString (hexToDec (__substring 0 2 c));
-      g = toString (hexToDec (__substring 2 2 c));
-      b = toString (hexToDec (__substring 4 2 c));
+      r = toString (hexToDec (__substring 1 3 c));
+      g = toString (hexToDec (__substring 3 3 c));
+      b = toString (hexToDec (__substring 5 3 c));
       res = "rgba(${r}, ${g}, ${b}, .5)";
-    in res;
+    in
+    res;
 
   # general stuff
 
@@ -46,18 +47,21 @@ with lib; rec {
       };
       chars = stringToCharacters v;
       charsLen = length chars;
-    in foldl (a: v: a + v) 0
-    (imap0 (k: v: hexToInt."${v}" * (pow 16 (charsLen - k - 1))) chars);
+    in
+    foldl (a: v: a + v) 0
+      (imap0 (k: v: hexToInt."${v}" * (pow 16 (charsLen - k - 1))) chars);
 
-  pow = let
-    pow' = base: exponent: value:
-      # FIXME: It will silently overflow on values > 2**62 :(
-      # The value will become negative or zero in this case
-      if exponent == 0 then
-        1
-      else if exponent <= 1 then
-        value
-      else
-        (pow' base (exponent - 1) (value * base));
-  in base: exponent: pow' base exponent base;
+  pow =
+    let
+      pow' = base: exponent: value:
+        # FIXME: It will silently overflow on values > 2**62 :(
+        # The value will become negative or zero in this case
+        if exponent == 0 then
+          1
+        else if exponent <= 1 then
+          value
+        else
+          (pow' base (exponent - 1) (value * base));
+    in
+    base: exponent: pow' base exponent base;
 }

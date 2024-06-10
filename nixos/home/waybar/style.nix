@@ -8,53 +8,56 @@ let
 in
 ''
   * {
+    font-family: "Fantasque Sans Mono", "JetBrains Mono", "Font Awesome 5 Free";
+    font-weight: bold;
+    font-size: 15px;
+    transition: none;
+    margin: 0px;
     border: none;
-    border-radius: 0;
-    font-family: "JetBrains Mono", "Font Awesome 5 Free";
-    font-size: 12px;
-    font-style: normal;
-    min-height: 0;
-    background: rgba(31,31,40,.0);
-    padding: 0 0.75rem;
+    border-radius: 0px;
+    border-color: ${default.xcolors.border};
+    color: ${default.xcolors.foreground};
   }
   window#waybar {
-    background: rgba(31,31,40,.85);
-    transition-property: background-color;
-    transition-duration: .5s;
-    color: ${default.xcolors.fg}
+    border-radius: 0px;
+    background: ${default.xcolors.barBackground};
+  }
+  #waybar {
+    margin: 0px;
   }
   #tags {
-    padding: 3px 0px;
-    border: solid 0px ${default.xcolors.fg};
-    font-weight: normal;
+    margin: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+    padding: 0px;
   }
   #tags button {
-    margin: 0px 3px;
-    padding: 0;
-    color: ${default.xcolors.comment};
-    background-color: ${default.xcolors.comment};
-    border: solid 0px transparent;
-    transition: all 0.3s ease-in-out;
-    text-shadow: 0px 0px;
-    box-shadow: inset 0 0 transparent;
-    border-radius: 100px;
-    font-size: 5px;
+    box-shadow: none;
+    border-bottom: 2px solid ${default.xcolors.barBackground};
+    background-color: ${default.xcolors.barBackground};
+    color: ${default.xcolors.foreground};
   }
   #tags button:hover {
-    color: ${default.xcolors.disabled};
-    background-color: ${default.xcolors.disabled};
-    background-size: 100% 100%;
+    color: ${default.xcolors.foreground};
+    background-color: ${default.xcolors.barBackground};
+    border-color: ${default.xcolors.backgroundLight1};
   }
   #tags button.occupied {
-    color: ${default.xcolors.disabled};
-    background-color: ${default.xcolors.disabled};
+    color: ${default.xcolors.foreground};
+    background-color: ${default.xcolors.barBackground};
+    border-color: ${default.xcolors.backgroundLight2};
   }
   #tags button.focused {
-    color: ${default.xcolors.primary};
-    background-color: ${default.xcolors.primary};
-    background-size: 100% 100%;
-    transition: all 0.3s ease-in-out;
-    background-image: url("${OSLogo}");
+    color: ${default.xcolors.foreground};
+    background-color: ${default.xcolors.barBackground};
+    border-color: ${default.xcolors.backgroundLight3};
   }
-  
+  #network {
+    padding-right: 14px;
+  }
+  #network, #pulseaudio, #battery {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 ''

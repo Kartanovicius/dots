@@ -1,48 +1,31 @@
 { default, mkLiteral }:
 
-let
-  # inherit (config.lib.formats.rasi) mkLiteral;
-  # Use `mkLiteral` for string-like values that should show without
-  # quotes, e.g.:
-  # {
-  #   foo = "abc"; =&gt; foo: "abc";
-  #   bar = mkLiteral "abc"; =&gt; bar: abc;
-  # };
-  background = "#000000";
-  background-alt = "#1f1f1f";
-  foreground = "#FFFFFF";
-  selected = "#61AFEF";
-  active = "#B1E3AD";
-  urgent = "#E06C75";
-  rad = "4px";
-in
 {
   "*" = {
-    background-color = mkLiteral background;
-    text-color = mkLiteral foreground;
-    border-colour = mkLiteral selected;
-    handle-colour = mkLiteral selected;
-    background-colour = mkLiteral background;
-    foreground-colour = mkLiteral foreground;
-    alternate-background = mkLiteral background-alt;
-    normal-background = mkLiteral background;
-    normal-foreground = mkLiteral foreground;
-    urgent-background = mkLiteral urgent;
-    urgent-foreground = mkLiteral background;
-    active-background = mkLiteral active;
-    active-foreground = mkLiteral background;
-    selected-normal-background = mkLiteral selected;
-    selected-normal-foreground = mkLiteral background;
-    selected-urgent-background = mkLiteral active;
-    selected-urgent-foreground = mkLiteral background;
-    selected-active-background = mkLiteral urgent;
-    selected-active-foreground = mkLiteral background;
-    alternate-normal-background = mkLiteral background;
-    alternate-normal-foreground = mkLiteral foreground;
-    alternate-urgent-background = mkLiteral urgent;
-    alternate-urgent-foreground = mkLiteral background;
-    alternate-active-background = mkLiteral active;
-    alternate-active-foreground = mkLiteral background;
+    border-color = mkLiteral default.xcolors.border;
+    handle-color = mkLiteral default.xcolors.primary;
+    text-color = mkLiteral default.xcolors.foreground;
+    background-color = mkLiteral default.xcolors.background;
+    foreground-color = mkLiteral default.xcolors.foreground;
+    alternate-background = mkLiteral default.xcolors.foreground;
+    normal-background = mkLiteral default.xcolors.background;
+    normal-foreground = mkLiteral default.xcolors.foreground;
+    urgent-background = mkLiteral default.xcolors.background;
+    urgent-foreground = mkLiteral default.xcolors.foreground;
+    active-background = mkLiteral default.xcolors.background;
+    active-foreground = mkLiteral default.xcolors.foreground;
+    selected-normal-background = mkLiteral default.xcolors.backgroundLight1;
+    selected-normal-foreground = mkLiteral default.xcolors.foreground;
+    selected-urgent-background = mkLiteral default.xcolors.backgroundLight1;
+    selected-urgent-foreground = mkLiteral default.xcolors.foreground;
+    selected-active-background = mkLiteral default.xcolors.backgroundLight1;
+    selected-active-foreground = mkLiteral default.xcolors.foreground;
+    alternate-normal-background = mkLiteral default.xcolors.foreground;
+    alternate-normal-foreground = mkLiteral default.xcolors.background;
+    alternate-urgent-background = mkLiteral default.xcolors.foreground;
+    alternate-urgent-foreground = mkLiteral default.xcolors.background;
+    alternate-active-background = mkLiteral default.xcolors.foreground;
+    alternate-active-foreground = mkLiteral default.xcolors.background;
   };
   "window" = {
     /* properties for window widget */
@@ -55,7 +38,9 @@ in
     enabled = true;
     margin = mkLiteral "0px";
     padding = mkLiteral "0px";
-    border-radius = mkLiteral "calc((4px * 2))";
+    border = mkLiteral "2px solid";
+    border-color = mkLiteral default.xcolors.backgroundLight1;
+    border-radius = mkLiteral "7px";
     cursor = mkLiteral "default";
   };
   "mainbox" = {
@@ -63,54 +48,62 @@ in
       "inputbar"
       "listview"
     ];
-    padding = mkLiteral "1.5em";
-    spacing = mkLiteral "1em";
+    padding = mkLiteral "0px";
   };
   "inputbar" = {
     children = [
       "prompt"
       "entry"
     ];
-    border-radius = mkLiteral rad;
-    background-color = mkLiteral background-alt;
+    spacing = mkLiteral "0px";
+    border = mkLiteral "0px solid";
+    border-radius = mkLiteral "0px";
   };
-  "prompt, entry, element selected" = {
+  "prompt, entry" = {
     vertical-align = mkLiteral "0.5";
-    background-color = mkLiteral background-alt;
   };
   "prompt" = {
     padding = mkLiteral "1%";
+    background-color = mkLiteral default.xcolors.backgroundLight1;
   };
   "entry" = {
     blink = false;
     padding = mkLiteral "0 1.5% 0 0";
+    background-color = mkLiteral default.xcolors.backgroundLight1;
   };
   "listview" = {
     enabled = true;
-    lines = 10;
-    columns = 1;
+    lines = 3;
+    columns = 5;
     cycle = false;
     dynamic = true;
+    layout = mkLiteral "vertical";
   };
-
   "element" = {
-    orientation = "horizontal";
-    padding = mkLiteral "0.5em";
-    border-radius = mkLiteral rad;
+    orientation = mkLiteral "vertical";
+    padding = mkLiteral "1em 0.5em 1em 0.5em";
+    margin = mkLiteral "0.5em";
     children = [
       "element-icon"
       "element-text"
     ];
     spacing = mkLiteral "0.5em";
+    border = mkLiteral "0px solid";
+    border-radius = mkLiteral "2px";
+    border-color = mkLiteral default.xcolors.border;
+  };
+  "element selected" = {
+    border = mkLiteral "2px solid";
+    background-color = mkLiteral default.xcolors.backgroundLight1;
   };
   "element-text" = {
     vertical-align = mkLiteral "0.5";
   };
   "element-text, element-icon" = {
-    horizontal-align = 0;
+    horizontal-align = mkLiteral "0.5";
     background-color = mkLiteral "inherit";
   };
-  "element-icon" = { size = mkLiteral "1.5em"; };
+  "element-icon" = { size = mkLiteral "2.5em"; };
   "listview, element, element selected, element-text, element-icon" = {
     cursor = mkLiteral "pointer";
   };

@@ -16,24 +16,32 @@ riverctl spawn "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_
 # Appearance #
 ##############
 riverctl background-color       0x000000
-riverctl border-color-focused   0x6B998Eee
-riverctl border-color-unfocused   0x595959aa
-find "${HOME}/Pictures/wallpaper/" -type f | shuf -n1 | read WALLPAPER
-spawn_once swaybg -m fill -i "${HOME}/Pictures/wallpaper/w2.jpg"
-riverctl border-width 5
-riverctl xcursor-theme tarazed
-gsettings set org.gnome.desktop.interface      gtk-theme     Adwaita
-gsettings set org.gnome.desktop.interface      icon-theme    Breeze
-gsettings set org.gnome.desktop.wm.preferences button-layout " "
-gsettings set org.gnome.desktop.interface      cursor-theme  tarazed
+riverctl border-color-focused   0x272727ee
+riverctl border-color-unfocused   0x000000ee
+WALLPAPER=$(find "${HOME}/Pictures/wallpaper/" -type f -exec stat --format='%Y %n' {} + | sort -n | cut -d' ' -f2- | tail -n 1)
+spawn_once swaybg -m fill -i "${WALLPAPER}"
+riverctl border-width 2
+riverctl xcursor-theme bibata
+# gsettings set org.gnome.desktop.interface      gtk-theme     Materia-dark
+# gsettings set org.gnome.desktop.interface      icon-theme    papirus-icon-theme
+# gsettings set org.gnome.desktop.wm.preferences button-layout " "
+# gsettings set org.gnome.desktop.interface      cursor-theme  Bibata-Modern-Classic
 
 ###########
 # Widgets #
 ###########
-spawn_once swayidle
+on_unlock() {
+    # Mute the audio
+    amixer set Master mute
+}
+spawn_once swayidle -w \
+    timeout 300 'on_unlock' \
+    resume 'on_unlock'
 spawn_once mako
 spawn_once kanshi
 spawn_once waybar
+spawn_once gammastep
+spawn_once lxsession
 
 # This is the example configuration file for river.
 #
@@ -44,6 +52,9 @@ spawn_once waybar
 # documentation.
 
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
+
+# Reload riverwm
+riverctl map normal Super+Shift R spawn "reset-config"
 
 # Super+Shift+Return to start an instance of kitty
 riverctl map normal Super+Shift Return spawn kitty
@@ -159,11 +170,19 @@ riverctl map normal Super F11 enter-mode passthrough
 # Super+F11 to return to normal mode
 riverctl map passthrough Super F11 enter-mode normal
 
+# riverctl map normal Super Super_L spawn "killall -SIGUSR1 waybar"
+# riverctl map -release normal Super Super_L spawn "killall -SIGUSR1 waybar"
+
+# riverctl map normal None Super_L spawn "killall -SIGUSR1 waybar"
+# riverctl map -release normal None Super_L spawn "killall -SIGUSR1 waybar"
+
 # Various media key mapping examples for both normal and locked mode which do
 # not have a modifier
+
 for mode in normal locked
 do
-    riverctl map $mode None XF86Favorites spawn "swaylock -c 000000"
+    riverctl map $mode None XF86Favorites spawn "swaylock -c 000000 | amixer set Master mute"
+    riverctl map $mode None Scroll_Lock spawn "swaylock -c 000000 | amixer set Master mute"
 
     # Eject the optical drive (well if you still have one that is)
     riverctl map $mode None XF86Eject spawn 'eject -T'
@@ -196,5 +215,5 @@ riverctl rule-add -app-id "bar" csd
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
-rivertile -view-padding 6 -outer-padding 6 &
+rivertile -view-padding 0 -outer-padding 0 &
 

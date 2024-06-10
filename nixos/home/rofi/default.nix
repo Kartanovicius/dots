@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ default, config, pkgs, lib, ... }:
 
 with lib; let
   inherit (config.lib.formats.rasi) mkLiteral;
@@ -26,7 +26,7 @@ in
       modi = "drun,emoji,ssh";
       kb-primary-paste = "Control+V,Shift+Insert";
       kb-secondary-paste = "Control+v,Insert";
-      display-drun = " Apps";
+      display-drun = ">";
       display-window = " Windows";
       display-run = " Run";
       display-filebrowser = " Files";

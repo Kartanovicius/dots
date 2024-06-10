@@ -1,10 +1,15 @@
 _: {
   mainBar = {
     layer = "top";
-    position = "top";
+    position = "bottom";
     margin-top = 0;
+    margin-left = 0;
+    margin-right = 0;
     margin-bottom = 0;
-    height = 30;
+    height = 25;
+    # start_hidden = true;
+    # mode = "overlay";
+    reload_style_on_change = true;
     modules-left = [
       "river/tags"
     ];
@@ -12,14 +17,20 @@ _: {
       "clock"
     ];
     modules-right = [
-      "memory"
-      "cpu"
+      # "memory"
+      # "cpu"
       "battery"
-      "backlight#icon"
-      "pulseaudio"
+      # "backlight#icon"
       "pulseaudio#microphone"
+      "pulseaudio"
       "network"
     ];
+    clock = {
+      format = "{:%H:%M - %A, %e %B %Y}";
+      format-alt = "{:%e %b %Y %H:%M}";
+      interval = 10;
+      tooltip-format = "{:%e %B %Y}";
+    };
     memory = {
       interval = 5;
       format = "{used:0.1f}G/{total:0.1f}G ";
@@ -51,20 +62,14 @@ _: {
       format-alt = "{time} {icon}";
       format-icons = [ "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
     };
-    clock = {
-      format = "{: %e %b %Y %H:%M}";
-      format-alt = " {: %e %b %Y (%A)}";
-      interval = 10;
-      tooltip-format = "{: %e %B %Y}";
-    };
     network = {
       format = "{ifname}";
-      format-wifi = " {icon}";
-      format-ethernet = " ";
+      format-wifi = "{icon}";
+      format-ethernet = "";
       format-disconnected = "睊";
       tooltip-format = "{essid}";
       on-click = "kitty nmtui";
-      format-icons = [ "󰤯 " "󰤟 " "󰤢 " "󰤢 " "󰤨 " ];
+      format-icons = [ "󰤯" "󰤟" "󰤢" "󰤢" "󰤨" ];
     };
     "network#vpn" = {
       interface = "tun0";
@@ -96,7 +101,8 @@ _: {
     };
     "pulseaudio#microphone" = {
       format = "{format_source}";
-      format-source = " {volume}%";
+      # format-source = " {volume}%";
+      format-source = "";
       format-source-muted = "";
       on-click = "pamixer --default-source -t";
       on-click-right = "pavucontrol";
@@ -115,6 +121,10 @@ _: {
       ];
       on-scroll-down = "brightnessctl -c backlight set 1%-";
       on-scroll-up = "brightnessctl -c backlight set +1%";
+    };
+    "river/tags" = {
+      num-tags = 5;
+      tag-labels = [ "1" "2" "3" "4" "5" ];
     };
   };
 }
