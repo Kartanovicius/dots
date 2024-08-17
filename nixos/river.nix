@@ -21,7 +21,7 @@
     }))
   ];
 
-  services.xserver.displayManager.sessionPackages = [
+  services.displayManager.sessionPackages = [
     (pkgs.river.overrideAttrs
       (prevAttrs: rec {
         postInstall =

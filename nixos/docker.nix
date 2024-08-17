@@ -2,10 +2,15 @@
 
 {
   users.extraGroups.docker.members = [ "donatask" ];
-  virtualisation.docker.enable = true;
-  virtualisation.docker.storageDriver = "btrfs";
-  virtualisation.docker.rootless = {
+  virtualisation.docker = {
     enable = true;
-    setSocketVariable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+    daemon.settings = {
+      "insecure-registries" = ''["cregistry.pricefx.eu"]'';
+      experimental = true;
+    };
   };
 }

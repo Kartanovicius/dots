@@ -28,7 +28,8 @@ rec {
     zsh-yarn-autocompletions = _zplug "g-plane" "zsh-yarn-autocompletions";
     zsh-syntax-highlighting = _zplug "zsh-users" "zsh-syntax-highlighting";
     zsh-history-substring-search = _zplug "zsh-users" "zsh-history-substring-search";
-    powerlevel10k = make_plugin { group = "romkatv"; name = "powerlevel10k"; file = "powerlevel10k.zsh-theme"; };
+    # powerlevel10k = _zplug "romkatv" "powerlevel10k";
+    # powerlevel10k = make_plugin { group = "romkatv"; name = "powerlevel10k"; file = "powerlevel10k.zsh-theme"; };
     nix-zsh-completions = _zplug "spwhitt" "nix-zsh-completions";
     zsh-vim-mode = _zplug "softmoth" "zsh-vim-mode";
     formarks = _zplug "wfxr" "formarks";

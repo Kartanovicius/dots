@@ -2,7 +2,8 @@
 { config, pkgs, lib, ... }:
 
 let
-  pfx-folder = "~/Pricefx/pricefx-clients-js";
+  pfx-client-folder = "~/Pricefx/pricefx-clients-js";
+  pfx-core-folder = "~/Pricefx/pricefx-core";
 in
 {
   programs.zsh.shellAliases = {
@@ -13,8 +14,8 @@ in
       tmux select-layout -t pfx tiled;
       tmux attach-session -t pfx;
     '';
-    pfx-sfdc-run = "export NODE_OPTIONS=--openssl-legacy-provider; yarn --cwd ${pfx-folder}/packages/pricefx-sfcd-canvas start";
-    pfx-module-run = "yarn --cwd ${pfx-folder}/packages/pricefx-modules start";
+    pfx-sfdc-run = "export NODE_OPTIONS=--openssl-legacy-provider; yarn --cwd ${pfx-client-folder}/packages/pricefx-sfcd-canvas start";
+    pfx-module-run = "yarn --cwd ${pfx-client-folder}/packages/pricefx-modules start";
     pfx-sugarcrm = "cd ~/Pricefx/pricefx-clients-js/packages/pricefx-crm-extensions/sugarCRM";
     pfx-create-sugar-crm-zip = ''
       (cd ~/Pricefx/pricefx-clients-js/packages/pricefx-crm-extensions/sugarCRM/source/ && \

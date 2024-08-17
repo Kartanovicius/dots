@@ -15,4 +15,6 @@
     url = "https://i.imgur.com/s8MR4o3.jpg";
     sha256 = "sha256:00gf7ainxfiymghyfgj8hwkjfbk2sr49n6mhsh6kjmzvyhkf377i";
   };
+
+  gui = import ./gui/simple.nix { };
 }

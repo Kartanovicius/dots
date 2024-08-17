@@ -6,7 +6,7 @@
     [
       ./kitty
       ./chromium
-      ./spicetify
+      # ./spicetify
       ./git
       ./rofi
       ./zsh
@@ -16,10 +16,12 @@
       ./zoxide
       ./gtk
       ./firefox
+      ./starship
+      ./hypr
       # ./eclipse
       # ./vscode
       # ./nvim
       ../lib
     ];
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
 }

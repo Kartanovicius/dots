@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz";
 in
 {
   imports =
@@ -12,7 +12,7 @@ in
       ./packages.nix
       ./lib
       ./river.nix
-      ./docker.nix
+      # ./docker.nix
       # ./virtualbox.nix
     ];
 
@@ -49,11 +49,11 @@ in
   };
 
   services = {
+    libinput.enable = true;
     xserver = {
       enable = true;
-      layout = "us"; # keyboard layout
+      xkb.layout = "us"; # keyboard layout
       excludePackages = with pkgs; [ xterm ];
-      libinput.enable = true;
       # desktopManager.gnome.enable = true;
       displayManager = {
         gdm = {
@@ -104,11 +104,17 @@ in
 
   programs.adb.enable = true;
 
-  networking.extraHosts =
-    ''
-          127.0.0.1   db
-      127.0.0.1   padb
-      127.0.0.1   redis
-      127.0.0.1   yugabyte
+  networking = {
+    extraHosts = ''
+      127.0.0.1 host.docker.internal
+      127.0.0.1 server
+      127.0.0.1 db
+      127.0.0.1 padb
+      127.0.0.1 redis
+      127.0.0.1 yugabyte
     '';
+  };
+
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = true;
 }

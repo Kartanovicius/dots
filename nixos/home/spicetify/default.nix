@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 let
-  spicetify-nix = builtins.getFlake "github:MichaelPachec0/spicetify-nix/e82a3a5597af46a0fbf2bbb18b6aa7fbf7125fac";
+  spicetify-nix = builtins.getFlake "github:MichaelPachec0/spicetify-nix/002a0a2c684aae5d457c8811538e3f655eba499f";
   spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
 in
 {
@@ -13,17 +13,17 @@ in
   imports = [ spicetify-nix.homeManagerModule ];
 
   # configure spicetify :)
-  programs.spicetify =
+  programs.spicetify-cli =
     {
       enable = true;
-      theme = spicePkgs.themes.Ziro;
-      colorScheme = "gray-dark";
+#      theme = spicePkgs.themes.Ziro;
+#      colorScheme = "gray-dark";
 
-      enabledExtensions = with spicePkgs.extensions; [
-        fullAppDisplay
-        shuffle # shuffle+ (special characters are sanitized out of ext names)
-        hidePodcasts
-        adblock
-      ];
+#      enabledExtensions = with spicePkgs.extensions; [
+#        fullAppDisplay
+#        shuffle # shuffle+ (special characters are sanitized out of ext names)
+#        hidePodcasts
+#        adblock
+#      ];
     };
 }

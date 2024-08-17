@@ -66,7 +66,8 @@ riverctl map -repeat normal Super Escape spawn "rofi -show power-menu -modi powe
 riverctl map normal Super R spawn "kitty ranger"
 
 riverctl map -repeat normal Super Print spawn 'grim - | wl-copy && notify-send "Fullscreen Screenshot Taken"'
-riverctl map -repeat normal Shift Print spawn 'grim -g "$(slurp)" - | wl-copy && notify-send "Selected Area Screenshot Taken"'
+riverctl map -repeat normal Shift Print spawn 'grim -g "$(slurp)" - | wl-copy && notify-send | "Selected Area Screenshot Taken"'
+riverctl map -repeat normal Super+Shift Print spawn 'grim -g "$(slurp)" /tmp/screenshot.png && drawing /tmp/screenshot.png && wl-copy < /tmp/screenshot.png && notify-send "Screenshot opened in Drawing and copied to clipboard" && rm /tmp/screenshot.png'
 riverctl map -repeat normal Shift+Control Print spawn 'grim -g "$(slurp)" ~/"Pictures"/"$(date +%Y%m%d-%H%M%S)".png && notify-send "screenshot taken & saved"'
 
 # Super+Q to close the focused view
@@ -181,8 +182,11 @@ riverctl map passthrough Super F11 enter-mode normal
 
 for mode in normal locked
 do
-    riverctl map $mode None XF86Favorites spawn "swaylock -c 000000 | amixer set Master mute"
-    riverctl map $mode None Scroll_Lock spawn "swaylock -c 000000 | amixer set Master mute"
+    # riverctl map $mode None XF86Favorites spawn "swaylock -c 000000 | amixer set Master mute"
+    # riverctl map $mode None Scroll_Lock spawn "swaylock -c 000000 | amixer set Master mute"
+
+    riverctl map $mode None XF86Favorites spawn "(hyprlock & sleep 1m && systemctl suspend) &"
+    riverctl map $mode None Scroll_Lock spawn "(hyprlock & sleep 1m && systemctl suspend) &"
 
     # Eject the optical drive (well if you still have one that is)
     riverctl map $mode None XF86Eject spawn 'eject -T'

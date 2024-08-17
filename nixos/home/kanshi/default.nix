@@ -1,33 +1,22 @@
-#Labukas
 { config, pkgs, lib, ... }:
 
 {
   services.kanshi = {
     enable = true;
     systemdTarget = "graphical-session.target";
-    profiles = {
-      undocked = {
-        outputs = [
+    settings = [
+      {
+        profile.name = "undocked";
+        profile.outputs = [
           {
             criteria = "eDP-1";
             position = "0,0";
           }
         ];
-      };
-      docked1 = {
-        outputs = [
-          {
-            criteria = "eDP-1";
-            position = "300,1440";
-          }
-          {
-            criteria = "DP-1";
-            position = "0,0";
-          }
-        ];
-      };
-      docked2 = {
-        outputs = [
+      }
+      {
+        profile.name = "docked1";
+        profile.outputs = [
           {
             criteria = "eDP-1";
             position = "300,1440";
@@ -37,9 +26,23 @@
             position = "0,0";
           }
         ];
-      };
-      dockedDaisyChain1 = {
-        outputs = [
+      }
+      {
+        profile.name = "docked2";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            position = "300,1440";
+          }
+          {
+            criteria = "DP-2";
+            position = "0,0";
+          }
+        ];
+      }
+      {
+        profile.name = "docked3";
+        profile.outputs = [
           {
             criteria = "eDP-1";
             position = "300,1440";
@@ -49,19 +52,7 @@
             position = "0,0";
           }
         ];
-      };
-      dockedDaisyChain2 = {
-        outputs = [
-          {
-            criteria = "eDP-1";
-            position = "300,1440";
-          }
-          {
-            criteria = "DP-8";
-            position = "0,0";
-          }
-        ];
-      };
-    };
+      }
+    ];
   };
 }

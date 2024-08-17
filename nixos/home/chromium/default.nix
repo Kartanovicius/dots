@@ -25,5 +25,6 @@
       "--force-dark-mode"
       "--ignore-gpu-blocklist"
     ];
+    # package = pkgs.ungoogled-chromium;
   };
 }

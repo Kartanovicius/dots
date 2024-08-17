@@ -8,8 +8,8 @@ in
   programs.waybar = {
     enable = true;
     systemd.enable = true;
-    style = waybar_style;
-    settings = waybar_config;
+    style = default.gui.waybar_style;
+    settings = default.gui.waybar_config;
   };
 }
 

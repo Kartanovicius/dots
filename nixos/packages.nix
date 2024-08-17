@@ -5,6 +5,9 @@ let
     (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/nixos-unstable)
     # reuse the current configuration
     { config = config.nixpkgs.config; };
+  gdk = pkgs.google-cloud-sdk.withExtraComponents (with pkgs.google-cloud-sdk.components; [
+    gke-gcloud-auth-plugin
+  ]);
 in
 {
   # Fonts
@@ -24,25 +27,22 @@ in
     home-manager
     # Browsers
     google-chrome
-    unstable.vivaldi
+    brave
+    ungoogled-chromium
     # Media
     spotify
     vlc
     # GUI Apps
-    libsForQt5.kcalc
-    gparted
+    gnome.gnome-calculator
+    # gparted
     meld
-    etcher
     libreoffice
     kanshi
     pcmanfm
     inkscape-with-extensions
-    element-desktop
-    logseq
-    unstable.anydesk
-    darktable
-    digikam
-    steam
+    unstable.logseq
+    unstable.remmina
+    drawing
     # CLI Apps
     ranger
     imagemagick
@@ -76,6 +76,9 @@ in
     temurin-jre-bin-21
     maven
     php
+    gdk
+    google-cloud-sdk
+    postgresql
     # System information
     htop
     btop
@@ -96,9 +99,9 @@ in
     # IDE
     unstable.vscode
     neovim
-    jetbrains.idea-community
     jetbrains-toolbox
-    android-studio
+    insomnia
+    # android-studio
     # Messengers
     tdesktop
     unstable.signal-desktop
@@ -123,7 +126,8 @@ in
     wayland-utils
     wl-clipboard
     wlroots
-    eww-wayland
+    # eww
+    playerctl
     # Customizations
     bibata-cursors
     papirus-icon-theme
@@ -148,6 +152,7 @@ in
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
     "electron-19.1.9"
+    "electron-27.3.11"
     "nodejs-18.18.2"
     "nodejs-16.20.2"
     "nodejs-16.20.0"
